@@ -144,12 +144,82 @@
   footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; font-family: var(--font-mono); font-size: 11px; color: var(--fg-dim); letter-spacing: 0.1em; }
   footer span { color: var(--border); margin: 0 0.5rem; }
 
+  /* ── HAMBURGER ── */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--fg-dim);
+    transition: all 0.25s;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .nav-mobile-menu {
+    display: none;
+    position: fixed;
+    top: 52px;
+    left: 0; right: 0;
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(4px);
+    z-index: 99;
+    padding: 0.5rem 1.25rem 1rem;
+    flex-direction: column;
+  }
+  .nav-mobile-menu.open { display: flex; }
+  .nav-mobile-menu a {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--fg-dim);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s;
+  }
+  .nav-mobile-menu a:last-child { border-bottom: none; }
+  .nav-mobile-menu a:hover { color: var(--fg-bright); }
+
+  /* ── TABLET ── */
+  @media (max-width: 900px) {
+    .projects-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── MOBILE ── */
   @media (max-width: 640px) {
+    .page-wrap { padding: 0 1.25rem; }
+    nav { padding: 0 1.25rem; }
     nav ul { display: none; }
-    .about-grid, .contact-wrap { grid-template-columns: 1fr; }
-    .about-ascii { display: none; }
-    .cert-item { grid-template-columns: auto 1fr; }
+    .nav-hamburger { display: flex; }
+    section:first-of-type { padding-top: 6rem; }
+    section { padding: 3rem 0; }
+    .hero-ascii { font-size: 9px; overflow-x: auto; }
+    .hero-name { font-size: clamp(22px, 8vw, 36px); }
+    .hero-title { font-size: 12px; }
+    .hero-desc { font-size: 14px; max-width: 100%; }
+    .hero-links { flex-direction: column; gap: 0.75rem; }
+    .hero-links .btn { justify-content: center; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .cert-item { grid-template-columns: auto 1fr; gap: 1rem; padding: 1rem; }
     .cert-year { display: none; }
+    .contact-wrap { grid-template-columns: 1fr; gap: 2rem; }
+    .contact-link-val { display: none; }
+    .about-ascii { display: none; }
+    .divider { font-size: 10px; letter-spacing: 0.15em; overflow: hidden; }
+    .sec-head { font-size: 10px; }
   }
 </style>
 </head>
@@ -168,7 +238,19 @@
     <li><a href="#certifications">certs</a></li>
     <li><a href="#contact">contact</a></li>
   </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="#about"          onclick="closeMobileMenu()">about</a>
+  <a href="#interests"      onclick="closeMobileMenu()">interests</a>
+  <a href="#skills"         onclick="closeMobileMenu()">skills</a>
+  <a href="#projects"       onclick="closeMobileMenu()">projects</a>
+  <a href="#experience"     onclick="closeMobileMenu()">experience</a>
+  <a href="#certifications" onclick="closeMobileMenu()">certs</a>
+  <a href="#contact"        onclick="closeMobileMenu()">contact</a>
+</div>
 
 <div class="page-wrap" id="pageWrap">
 
@@ -627,6 +709,18 @@ function spawnGalaxies() {
 
 spawnGalaxies();
 window.addEventListener('resize', () => { spawnGalaxies(); });
+
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+function closeMobileMenu() {
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+}
 
 // Copy email
 function copyEmail(btn) {
