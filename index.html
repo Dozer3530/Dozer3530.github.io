@@ -231,7 +231,6 @@
   <div class="nav-sig">zk<span>@</span>portfolio<span>:~$</span></div>
   <ul>
     <li><a href="#about">about</a></li>
-    <li><a href="#interests">interests</a></li>
     <li><a href="#skills">skills</a></li>
     <li><a href="#projects">projects</a></li>
     <li><a href="#experience">experience</a></li>
@@ -244,7 +243,6 @@
 </nav>
 <div class="nav-mobile-menu" id="mobileMenu">
   <a href="#about"          onclick="closeMobileMenu()">about</a>
-  <a href="#interests"      onclick="closeMobileMenu()">interests</a>
   <a href="#skills"         onclick="closeMobileMenu()">skills</a>
   <a href="#projects"       onclick="closeMobileMenu()">projects</a>
   <a href="#experience"     onclick="closeMobileMenu()">experience</a>
@@ -275,33 +273,20 @@
         <p>I'm a Digital Agriculture student at Olds College — my time is spent in the field or in the office analyzing the data. I spent last summer at the Olds College Centre for Innovation collecting data via drones, soil probes, GPS equipment, and many more sensors. But my favorite part is then making sense of all that data. That gap between unusable raw field data and something actually useful is what drives most of my work.</p>
         <p>Right now I'm building RETA, an open-source toolkit for cleaning agricultural geo-spatial data such as soil and yield data, and its machine learning extension RETA_ML, which uses graph neural networks to detect spatial outliers in field sensor data.</p>
         <p>Based in Carstairs, Alberta.</p>
+        <div style="margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;">
+          <span style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--fg-dim);margin-right:0.25rem;">// interests</span>
+          <span class="tag">[~] open source</span>
+          <span class="tag">[~] fishing</span>
+          <span class="tag">[~] agriculture</span>
+          <span class="tag">[~] technology</span>
+        </div>
       </div>
 
     </div>
   </section>
 
-  <section id="interests">
-    <div class="sec-head"><span class="sec-num">02.</span> interests</div>
-    <div class="cert-list fade-in">
-      <div class="cert-item">
-        <div class="cert-glyph">[~]</div>
-        <div class="cert-info"><div class="cert-name">Open Source</div><div class="cert-issuer">Building tools that anyone can use and improve</div></div>
-      </div>
-      <div class="cert-item">
-        <div class="cert-glyph">[~]</div>
-        <div class="cert-info"><div class="cert-name">Fishing</div><div class="cert-issuer">Spending time on the water</div></div>
-      </div>
-      <div class="cert-item">
-        <div class="cert-glyph">[~]</div>
-        <div class="cert-info"><div class="cert-name">Agriculture</div><div class="cert-issuer">My industry of interest</div></div>
-      </div>
-      <div class="cert-item">
-        <div class="cert-glyph">[~]</div>
-        <div class="cert-info"><div class="cert-name">Technology</div><div class="cert-issuer">Especially when it is real world usable technology</div></div>
-      </div>
-    </div>
-  </section>
-    <div class="sec-head"><span class="sec-num">03.</span> skills</div>
+  <section id="skills">
+    <div class="sec-head"><span class="sec-num">02.</span> skills</div>
     <div class="divider">----[ technical stack ]----</div>
     <div class="skills-grid fade-in">
       <div class="skill-group">
@@ -360,7 +345,7 @@
   </section>
 
   <section id="projects">
-    <div class="sec-head"><span class="sec-num">04.</span> projects</div>
+    <div class="sec-head"><span class="sec-num">03.</span> projects</div>
     <div class="divider">----[ selected work ]----</div>
     <div class="projects-grid fade-in">
       <div class="project-card">
@@ -388,7 +373,7 @@
   </section>
 
   <section id="experience">
-    <div class="sec-head"><span class="sec-num">05.</span> experience</div>
+    <div class="sec-head"><span class="sec-num">04.</span> experience</div>
     <div class="divider">----[ work history ]----</div>
     <div class="cert-list fade-in">
 
@@ -419,7 +404,7 @@
   </section>
 
   <section id="certifications">
-    <div class="sec-head"><span class="sec-num">06.</span> certifications</div>
+    <div class="sec-head"><span class="sec-num">05.</span> certifications</div>
     <div class="divider">----[ credentials ]----</div>
     <div class="cert-list fade-in">
       <a href="https://www.oldscollege.ca/programs/areas-of-interest/agriculture-technology/bachelor-of-digital-agriculture.html" class="cert-item" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
@@ -441,7 +426,7 @@
   </section>
 
   <section id="contact">
-    <div class="sec-head"><span class="sec-num">07.</span> contact</div>
+    <div class="sec-head"><span class="sec-num">06.</span> contact</div>
     <div class="contact-wrap fade-in">
       <div class="contact-text">
         <p>Open to research collaborations, precision agriculture projects, and opportunities in the digital agriculture space.</p>
@@ -701,6 +686,7 @@ function spawnGalaxies() {
       direction: cfg.dir,
     });
 
+    wrap2.dataset.depth = (0.3 + Math.random() * 0.7).toFixed(3);
     instances.push(wrap2);
     // Stagger fade-in
     setTimeout(() => wrap2.classList.add('visible'), 100 + instances.length * 120);
@@ -709,6 +695,22 @@ function spawnGalaxies() {
 
 spawnGalaxies();
 window.addEventListener('resize', () => { spawnGalaxies(); });
+
+// ── MOUSE PARALLAX ──
+let rawMX = 0, rawMY = 0, smMX = 0, smMY = 0;
+window.addEventListener('mousemove', e => {
+  rawMX = (e.clientX / window.innerWidth  - 0.5) * 2;
+  rawMY = (e.clientY / window.innerHeight - 0.5) * 2;
+});
+(function parallaxLoop() {
+  smMX = lerp(smMX, rawMX, 0.07);
+  smMY = lerp(smMY, rawMY, 0.07);
+  for (const el of instances) {
+    const d = parseFloat(el.dataset.depth || 0.5);
+    el.style.transform = `translate(${smMX * 35 * d}px, ${smMY * 22 * d}px)`;
+  }
+  requestAnimationFrame(parallaxLoop);
+})();
 
 // Hamburger menu
 const hamburger = document.getElementById('hamburger');
