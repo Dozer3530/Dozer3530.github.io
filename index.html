@@ -472,6 +472,110 @@
         <div class="project-stack"><span class="tag">PyTorch</span><span class="tag">PyG</span><span class="tag">HeteroGAT</span><span class="tag">XGBoost</span><span class="tag">Optuna</span><span class="tag">GeoPandas</span></div>
         <a href="https://github.com/Dozer3530/RETA_ML" class="project-link" target="_blank" rel="noopener noreferrer">[ view project ] &rarr;</a>
       </div>
+
+      <div class="project-card">
+        <div class="project-tag">// tool &mdash; 2025</div>
+        <div class="project-name">Perch</div>
+        <div class="project-desc">Windows GUI for sorting multispectral drone imagery from MicaSense cameras into band-specific folders — auto-detects sensor model from EXIF metadata, parallel copy/move with live progress tracking and ETA.</div>
+        <button class="project-detail-btn" data-target="perch-expand">[+ details]</button>
+        <div class="project-expand" id="perch-expand">
+          <div>
+            <div class="project-expand-label">// features</div>
+            <div class="project-expand-row">Sensor presets: MicaSense RedEdge-MX Dual (10-band) and Altum-PT (7-band)</div>
+            <div class="project-expand-row">Auto-detects camera model from EXIF metadata</div>
+            <div class="project-expand-row">Parallel workers with configurable thread count; live file rate + ETA</div>
+            <div class="project-expand-row">Collision detection with auto-rename or skip; drag-and-drop folder selection</div>
+            <div class="project-expand-row">Light/dark/system theme; persistent settings between sessions</div>
+          </div>
+          <div>
+            <div class="project-expand-label">// distribution</div>
+            <div class="project-expand-row">Single-file PyInstaller executable — no installer required</div>
+            <div class="project-expand-row">Auto-update checks against GitHub Releases</div>
+            <div class="project-expand-row">GitHub Actions CI/CD with automated EXE attachment to releases</div>
+          </div>
+        </div>
+        <div class="project-stack"><span class="tag">Python</span><span class="tag">CustomTkinter</span><span class="tag">PyInstaller</span><span class="tag">MicaSense</span><span class="tag">EXIF</span></div>
+        <a href="https://github.com/Dozer3530/Perch" class="project-link" target="_blank" rel="noopener noreferrer">[ view project ] &rarr;</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">// tool &mdash; 2025</div>
+        <div class="project-name">Plover</div>
+        <div class="project-desc">QGIS plugin that solves the Traveling Salesperson Problem for field routing — generates the shortest tour visiting all waypoints while respecting field boundaries and interior obstacles like sloughs and exclusion zones.</div>
+        <button class="project-detail-btn" data-target="plover-expand">[+ details]</button>
+        <div class="project-expand" id="plover-expand">
+          <div>
+            <div class="project-expand-label">// algorithm</div>
+            <div class="project-expand-row">Visibility graph construction — walkable paths between waypoints + boundary vertices, respects polygon holes</div>
+            <div class="project-expand-row">Dijkstra's algorithm for shortest path between all waypoint pairs</div>
+            <div class="project-expand-row">Nearest-neighbor heuristic + 2-opt tour optimization</div>
+            <div class="project-expand-row">Route stitching — converts optimized sequence into continuous polyline</div>
+          </div>
+          <div>
+            <div class="project-expand-label">// integration</div>
+            <div class="project-expand-row">QGIS 3.x and 4.x compatible (Qt5/Qt6)</div>
+            <div class="project-expand-row">Outputs: GeoPackage, Shapefile, or GeoJSON line layer</div>
+            <div class="project-expand-row">CRS-aware — projected systems only (UTM, NAD83, etc.)</div>
+            <div class="project-expand-row">Built for soil sampling, pest scouting, and sensor verification on research plots</div>
+          </div>
+        </div>
+        <div class="project-stack"><span class="tag">Python</span><span class="tag">QGIS</span><span class="tag">Dijkstra</span><span class="tag">TSP</span><span class="tag">GeoPandas</span></div>
+        <a href="https://github.com/Dozer3530/Plover" class="project-link" target="_blank" rel="noopener noreferrer">[ view project ] &rarr;</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">// tool &mdash; 2025</div>
+        <div class="project-name">Lapwing</div>
+        <div class="project-desc">Sentinel-2 L2A satellite imagery downloader for agricultural field boundaries — retrieves all-time, cloud-filtered scenes and outputs RGB, NDVI, NDWI, False Color, and DEM as analysis-ready GeoTIFFs clipped to the field.</div>
+        <button class="project-detail-btn" data-target="lapwing-expand">[+ details]</button>
+        <div class="project-expand" id="lapwing-expand">
+          <div>
+            <div class="project-expand-label">// outputs</div>
+            <div class="project-expand-row">RGB true-color, NDVI (colorized + raw), NDWI, False Color composites</div>
+            <div class="project-expand-row">DEM + slope from multiple providers with automatic cascading fallback</div>
+            <div class="project-expand-row">All outputs as GeoTIFF, clipped to exact field boundary</div>
+          </div>
+          <div>
+            <div class="project-expand-label">// technical</div>
+            <div class="project-expand-row">Sentinel-2 L2A via Copernicus CDSE (free account); optional AWS S3 direct access</div>
+            <div class="project-expand-row">Parallel downloads with configurable cloud-cover filter</div>
+            <div class="project-expand-row">Accepts zipped shapefile, loose shapefile, or GeoPackage field boundary</div>
+            <div class="project-expand-row">GUI or CLI interface; QGIS-compatible output</div>
+          </div>
+        </div>
+        <div class="project-stack"><span class="tag">Python</span><span class="tag">Sentinel-2</span><span class="tag">NDVI</span><span class="tag">NDWI</span><span class="tag">Copernicus</span><span class="tag">GeoTIFF</span></div>
+        <a href="https://github.com/Dozer3530/Lapwing" class="project-link" target="_blank" rel="noopener noreferrer">[ view project ] &rarr;</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">// tool &mdash; 2025</div>
+        <div class="project-name">Magpie</div>
+        <div class="project-desc">Weekly crop-monitoring package builder — merges Survey123 field observations and PT2R lab nutrient data into per-crop Excel and GeoPackage deliverables, with 9 fixed monitoring points per crop and zipped weekly exports.</div>
+        <button class="project-detail-btn" data-target="magpie-expand">[+ details]</button>
+        <div class="project-expand" id="magpie-expand">
+          <div>
+            <div class="project-expand-label">// data sources</div>
+            <div class="project-expand-row">Survey123 field observations: disease, soil sensors, insects, growth stages</div>
+            <div class="project-expand-row">PT2R lab nutrient panel reports with manual location assignment</div>
+            <div class="project-expand-row">9 fixed monitoring points per crop (e.g. Canola M1–M9, Corn L1–L9)</div>
+          </div>
+          <div>
+            <div class="project-expand-label">// outputs</div>
+            <div class="project-expand-row">Zipped weekly package: filled Excel template + hyperlinked photos per row</div>
+            <div class="project-expand-row">GeoPackage with spatial monitoring data</div>
+            <div class="project-expand-row">PT2R letter grades (D/L/S/H/VH); Low/Med/High severity; units in headers</div>
+          </div>
+          <div>
+            <div class="project-expand-label">// architecture</div>
+            <div class="project-expand-row">Dual frontend: PySide6 desktop app + FastAPI localhost web server</div>
+            <div class="project-expand-row">Shared service layer — features apply to both frontends automatically</div>
+            <div class="project-expand-row">SQLite storage (WAL mode); parity test ensures byte-equivalent output</div>
+          </div>
+        </div>
+        <div class="project-stack"><span class="tag">Python</span><span class="tag">PySide6</span><span class="tag">FastAPI</span><span class="tag">Survey123</span><span class="tag">GeoPandas</span><span class="tag">SQLite</span></div>
+        <a href="https://github.com/Dozer3530/Magpie" class="project-link" target="_blank" rel="noopener noreferrer">[ view project ] &rarr;</a>
+      </div>
+
     </div>
   </section>
 
