@@ -550,14 +550,14 @@
       <div class="project-card">
         <div class="project-tag">// tool &mdash; 2026</div>
         <div class="project-name">Magpie</div>
-        <div class="project-desc">Weekly crop-monitoring package builder — merges Survey123 field observations and PT2R lab nutrient data into per-crop Excel and GeoPackage deliverables, with 9 fixed monitoring points per crop and zipped weekly exports.</div>
+        <div class="project-desc">Weekly crop-monitoring package builder — merges Survey123 field observations, PT2R lab nutrient data, and Pest ID bug-count feeds into per-crop Excel and GeoPackage deliverables, with fixed monitoring points per crop and zipped weekly exports.</div>
         <button class="project-detail-btn" data-target="magpie-expand">[+ details]</button>
         <div class="project-expand" id="magpie-expand">
           <div>
             <div class="project-expand-label">// data sources</div>
-            <div class="project-expand-row">Survey123 field observations: disease, soil sensors, insects, growth stages</div>
-            <div class="project-expand-row">PT2R lab nutrient panel reports with manual location assignment</div>
-            <div class="project-expand-row">9 fixed monitoring points per crop (e.g. Canola M1–M9, Corn L1–L9)</div>
+            <div class="project-expand-row">Survey123 field observations: disease, TDR soil sensors, insects, growth stage — GPS auto-matched to points within 50 m</div>
+            <div class="project-expand-row">PT2R lab reports: nutrient panel, sufficiency ratings, expected-ratio columns</div>
+            <div class="project-expand-row">Pest ID: living per-field bug-count log, weekly snapshot selection</div>
           </div>
           <div>
             <div class="project-expand-label">// outputs</div>
@@ -574,6 +574,35 @@
         </div>
         <div class="project-stack"><span class="tag">Python</span><span class="tag">PySide6</span><span class="tag">FastAPI</span><span class="tag">Survey123</span><span class="tag">GeoPandas</span><span class="tag">SQLite</span></div>
         <a href="https://github.com/Dozer3530/Magpie" class="project-link" target="_blank" rel="noopener noreferrer">[ view project ] &rarr;</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">// tool &mdash; 2026</div>
+        <div class="project-name">Kestrel</div>
+        <div class="project-desc">Desktop geospatial data inspector that diagnoses why layers fail to display in QGIS — a read-only CRS/UTM sanity-checker that identifies coordinate reference system issues and rendering failures without modifying files.</div>
+        <button class="project-detail-btn" data-target="kestrel-expand">[+ details]</button>
+        <div class="project-expand" id="kestrel-expand">
+          <div>
+            <div class="project-expand-label">// diagnostics</div>
+            <div class="project-expand-row">CRS inspection: EPSG codes, UTM zones, datum info, valid regions</div>
+            <div class="project-expand-row">Geographic extent reprojected to WGS84 with visual map preview</div>
+            <div class="project-expand-row">Layer metadata: geometry types, feature counts, raster bands/pixel size/NoData</div>
+            <div class="project-expand-row">Detects missing CRS, coordinate mismatches, empty layers, antimeridian wrap, self-intersecting geometry</div>
+          </div>
+          <div>
+            <div class="project-expand-label">// inputs</div>
+            <div class="project-expand-row">Shapefile (zipped or plain), GeoPackage, GeoJSON, KML/KMZ/GML/GPX</div>
+            <div class="project-expand-row">CSV/Excel with coordinate columns; rasters (GeoTIFF, IMG, VRT, JPEG2000)</div>
+            <div class="project-expand-row">Drag-and-drop; read-only — never modifies source files</div>
+          </div>
+          <div>
+            <div class="project-expand-label">// distribution</div>
+            <div class="project-expand-row">Windows installer (Inno Setup) or portable zip; PySide6 GUI + CLI</div>
+            <div class="project-expand-row">Right-click shell integration via --register flag</div>
+          </div>
+        </div>
+        <div class="project-stack"><span class="tag">Python</span><span class="tag">PySide6</span><span class="tag">GDAL</span><span class="tag">rasterio</span><span class="tag">PROJ</span><span class="tag">PyInstaller</span></div>
+        <a href="https://github.com/Dozer3530/Kestrel" class="project-link" target="_blank" rel="noopener noreferrer">[ view project ] &rarr;</a>
       </div>
 
     </div>
