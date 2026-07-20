@@ -3,16 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zachary Komarnisky</title>
+<title>Zachary Komarnisky — Digital Agriculture &amp; Applied Research</title>
+<meta name="description" content="Zachary Komarnisky — Digital Agriculture student at Olds College building open-source tools for agricultural geospatial data: yield cleaning, GNN outlier detection, and Sentinel-2 pipelines.">
+<link rel="canonical" href="https://dozer3530.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dozer3530.github.io/">
+<meta property="og:title" content="Zachary Komarnisky — Digital Agriculture &amp; Applied Research">
+<meta property="og:description" content="8 open-source tools for agricultural geospatial data — yield cleaning, GNN outlier detection, Sentinel-2 pipelines, and field-data workflows.">
+<meta property="og:image" content="https://dozer3530.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Zachary Komarnisky — Digital Agriculture &amp; Applied Research">
+<meta name="twitter:description" content="8 open-source tools for agricultural geospatial data — yield cleaning, GNN outlier detection, Sentinel-2 pipelines, and field-data workflows.">
+<meta name="twitter:image" content="https://dozer3530.github.io/og-image.png">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIj4KICA8cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHJ4PSI0IiBmaWxsPSIjZjBlYmUwIi8+CiAgPHRleHQgeD0iMTYiIHk9IjE2IiBkb21pbmFudC1iYXNlbGluZT0iY2VudHJhbCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiM2YjRjMmEiIGxldHRlci1zcGFjaW5nPSItMSI+Wks8L3RleHQ+Cjwvc3ZnPg==">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<script>(function(){try{if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}})()</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inconsolata:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inconsolata&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Zachary Komarnisky",
+  "jobTitle": "Digital Agriculture Student & Research Assistant",
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "Olds College of Agriculture & Technology"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Carstairs",
+    "addressRegion": "AB",
+    "addressCountry": "CA"
+  },
+  "url": "https://dozer3530.github.io/",
+  "email": "mailto:zachkom@telus.net",
+  "sameAs": [
+    "https://github.com/Dozer3530",
+    "https://www.linkedin.com/in/zachary-komarnisky-211b8b408/"
+  ]
+}
+</script>
 <style>
   :root {
     --bg:       #f0ebe0;
     --bg2:      #e8e2d6;
     --fg:       #2c2820;
-    --fg-dim:   #7a7060;
+    --fg-dim:   #6d6353;
     --fg-bright:#1a1510;
     --accent:   #6b4c2a;
     --border:   #ccc4b4;
@@ -20,10 +61,31 @@
     --font-mono: 'Share Tech Mono', 'Courier New', monospace;
     --font-body: 'Inconsolata', monospace;
     --content-w: 860px;
+    color-scheme: light;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
+  section { scroll-margin-top: 64px; }
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 200;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 0.6rem 1rem;
+    background: var(--bg);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+  }
+  .skip-link:focus { left: 8px; top: 60px; }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
 
   body {
     background: var(--bg);
@@ -78,12 +140,12 @@
   section { padding: 5rem 0; }
   section:first-of-type { padding-top: 8rem; }
 
-  .sec-head { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-dim); margin-bottom: 2.5rem; display: flex; align-items: center; gap: 1rem; }
+  .sec-head { font-family: var(--font-mono); font-size: 11px; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-dim); margin-bottom: 2.5rem; display: flex; align-items: center; gap: 1rem; }
   .sec-head::after { content: ''; flex: 1; height: 1px; background: var(--border); }
   .sec-num { color: var(--accent); margin-right: 0.5rem; }
 
   .hero-ascii { font-family: var(--font-mono); font-size: 11px; line-height: 1.2; color: var(--fg-dim); margin-bottom: 2.5rem; white-space: pre; user-select: none; text-align: center; }
-  .hero-name { font-family: var(--font-mono); font-size: clamp(28px, 5vw, 48px); color: var(--fg-bright); letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 0.5rem; text-align: center; }
+  .hero-name { font-family: var(--font-mono); font-size: clamp(28px, 5vw, 48px); font-weight: 400; color: var(--fg-bright); letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 0.5rem; text-align: center; }
   .hero-title { font-family: var(--font-mono); font-size: 14px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 1.5rem; text-align: center; }
   .hero-desc { font-size: 15px; color: var(--fg); max-width: 520px; line-height: 1.8; margin-bottom: 2.5rem; text-align: center; margin-left: auto; margin-right: auto; }
   .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
@@ -93,13 +155,11 @@
   .btn-primary { border-color: var(--accent); color: var(--accent); }
   .btn-primary:hover { background: rgba(107,76,42,0.1); color: var(--fg-bright); }
 
-  .about-grid { display: block; }
   .about-text p { color: var(--fg); margin-bottom: 1rem; font-size: 15px; }
-  .about-ascii { font-family: var(--font-mono); font-size: 10px; line-height: 1.3; color: var(--border); white-space: pre; text-align: right; user-select: none; padding-top: 0.5rem; }
 
   .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
   .skill-group { background: var(--bg); padding: 1.5rem; }
-  .skill-group-title { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+  .skill-group-title { font-family: var(--font-mono); font-size: 11px; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
   .skill-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
   .skill-list li { font-family: var(--font-mono); font-size: 13px; color: var(--fg-dim); display: flex; align-items: center; gap: 0.6rem; transition: color 0.2s; }
   .skill-list li:hover { color: var(--fg-bright); }
@@ -110,7 +170,7 @@
   .project-card { background: var(--bg); padding: 1.75rem; display: flex; flex-direction: column; gap: 0.75rem; transition: background 0.2s; }
   .project-card:hover { background: var(--bg2); }
   .project-tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--fg-dim); }
-  .project-name { font-family: var(--font-mono); font-size: 15px; color: var(--fg-bright); line-height: 1.3; }
+  .project-name { font-family: var(--font-mono); font-size: 15px; font-weight: 400; color: var(--fg-bright); line-height: 1.3; }
   .project-desc { font-size: 13px; color: var(--fg-dim); line-height: 1.7; flex: 1; }
   .project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
   .tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; padding: 2px 8px; border: 1px solid var(--border); color: var(--fg-dim); }
@@ -118,8 +178,8 @@
   .project-link:hover { color: var(--fg-bright); }
   .project-detail-btn { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-dim); background: none; border: 1px solid var(--border); cursor: pointer; padding: 0.25rem 0.6rem; transition: all 0.2s; align-self: flex-start; margin-top: 0.25rem; }
   .project-detail-btn:hover { border-color: var(--accent); color: var(--fg-bright); }
-  .project-expand { display: none; border-top: 1px solid var(--border); padding-top: 1rem; margin-top: 0.25rem; display: flex; flex-direction: column; gap: 0.75rem; max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding-top 0.35s ease; padding-top: 0; }
-  .project-expand.open { max-height: 600px; padding-top: 1rem; border-top: 1px solid var(--border); }
+  .project-expand { margin-top: 0.25rem; display: flex; flex-direction: column; gap: 0.75rem; max-height: 0; overflow: hidden; visibility: hidden; padding-top: 0; transition: max-height 0.35s ease, padding-top 0.35s ease, visibility 0s 0.35s; }
+  .project-expand.open { padding-top: 1rem; border-top: 1px solid var(--border); visibility: visible; transition: max-height 0.35s ease, padding-top 0.35s ease; }
   .project-expand-label { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem; }
   .project-expand-row { font-family: var(--font-mono); font-size: 12px; color: var(--fg-dim); display: flex; gap: 0.5rem; line-height: 1.65; }
   .project-expand-row::before { content: '>'; color: var(--border); flex-shrink: 0; }
@@ -128,7 +188,7 @@
   .cert-item { background: var(--bg); padding: 1.25rem 1.5rem; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1.5rem; transition: background 0.2s; }
   .cert-item:hover { background: var(--bg2); }
   .cert-glyph { font-family: var(--font-mono); font-size: 18px; color: var(--border); user-select: none; width: 24px; text-align: center; }
-  .cert-name { font-family: var(--font-mono); font-size: 13px; color: var(--fg-bright); }
+  .cert-name { font-family: var(--font-mono); font-size: 13px; font-weight: 400; color: var(--fg-bright); }
   .cert-issuer { font-size: 12px; color: var(--fg-dim); margin-top: 2px; }
   .cert-year { font-family: var(--font-mono); font-size: 11px; color: var(--fg-dim); white-space: nowrap; }
 
@@ -141,9 +201,14 @@
   .contact-link-label { font-family: var(--font-mono); font-size: 13px; color: var(--fg-dim); flex: 1; }
   .contact-link:hover .contact-link-label { color: var(--fg-bright); }
   .contact-link-val { font-family: var(--font-mono); font-size: 12px; color: var(--fg-dim); }
+  .contact-mail { display: flex; align-items: center; gap: 1rem; flex: 1; text-decoration: none; min-width: 0; }
+  .copy-btn { background: none; border: none; cursor: pointer; padding: 9px; margin: -6px 0; color: var(--fg-dim); transition: color 0.2s; flex-shrink: 0; display: inline-flex; align-items: center; }
+  .copy-btn:hover { color: var(--accent); }
+  .visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
   .divider { font-family: var(--font-mono); font-size: 11px; color: var(--border); letter-spacing: 0.3em; margin-bottom: 2rem; user-select: none; }
-  .cursor { display: inline-block; width: 0.45em; height: 0.8em; background: var(--accent); vertical-align: -0.1em; margin-left: 4px; animation: blink 1.1s step-end infinite; }
+  .hero-name-inner { position: relative; display: inline-block; }
+  .cursor { position: absolute; left: 100%; top: 0.18em; width: 0.45em; height: 0.8em; background: var(--accent); margin-left: 6px; animation: blink 1.1s step-end infinite; }
   @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
   .fade-in { opacity: 0; transform: translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease; }
   .fade-in.visible { opacity: 1; transform: none; }
@@ -152,7 +217,7 @@
   footer span { color: var(--border); margin: 0 0.5rem; }
 
   /* ── DARK MODE ── */
-  body.dark {
+  html.dark {
     --bg:       #18130f;
     --bg2:      #201a14;
     --fg:       #e8e2d6;
@@ -161,6 +226,7 @@
     --accent:   #c08040;
     --border:   #3c3025;
     --nav-bg:   rgba(24,19,15,0.96);
+    color-scheme: dark;
   }
 
   .theme-btn {
@@ -211,7 +277,9 @@
     padding: 0.5rem 1.25rem 1rem;
     flex-direction: column;
   }
-  .nav-mobile-menu.open { display: flex; }
+  @media (max-width: 640px) {
+    .nav-mobile-menu.open { display: flex; }
+  }
   .nav-mobile-menu a {
     font-family: var(--font-mono);
     font-size: 12px;
@@ -247,22 +315,33 @@
     .hero-links .btn { justify-content: center; }
     .skills-grid { grid-template-columns: 1fr; }
     .projects-grid { grid-template-columns: 1fr; }
-    .cert-item { grid-template-columns: auto 1fr; gap: 1rem; padding: 1rem; }
-    .cert-year { display: none; }
+    .cert-item { grid-template-columns: auto 1fr auto; gap: 1rem; padding: 1rem; }
+    .cert-year { font-size: 10px; }
     .contact-wrap { grid-template-columns: 1fr; gap: 2rem; }
     .contact-link-val { display: none; }
-    .about-ascii { display: none; }
+    .contact-link-email .contact-link-val { display: block; overflow: hidden; text-overflow: ellipsis; }
     .divider { font-size: 10px; letter-spacing: 0.15em; overflow: hidden; }
     .sec-head { font-size: 10px; }
+  }
+
+  /* ── REDUCED MOTION ── */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .cursor { animation: none; }
+    .fade-in { opacity: 1; transform: none; transition: none; }
+    .galaxy-instance { transition: none; }
+    .project-expand, .project-expand.open { transition: none; }
   }
 </style>
 </head>
 <body>
 
-<div id="galaxyContainer"></div>
+<a href="#pageWrap" class="skip-link">Skip to content</a>
+
+<div id="galaxyContainer" aria-hidden="true"></div>
 
 <nav>
-  <div class="nav-sig">zk<span>@</span>portfolio<span>:~$</span></div>
+  <div class="nav-sig" aria-hidden="true">zk<span>@</span>portfolio<span>:~$</span></div>
   <ul>
     <li><a href="#about">about</a></li>
     <li><a href="#skills">skills</a></li>
@@ -271,8 +350,8 @@
     <li><a href="#certifications">certs</a></li>
     <li><a href="#contact">contact</a></li>
   </ul>
-  <button id="themeToggle" class="theme-btn">[dark]</button>
-  <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+  <button id="themeToggle" class="theme-btn" aria-label="Switch to dark theme" aria-pressed="false">[dark]</button>
+  <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -285,28 +364,28 @@
   <a href="#contact"        onclick="closeMobileMenu()">contact</a>
 </div>
 
-<div class="page-wrap" id="pageWrap">
+<main class="page-wrap" id="pageWrap">
 
   <section id="hero">
-    <div class="hero-ascii">+--------------------------------------------------+
+    <div class="hero-ascii" aria-hidden="true">+--------------------------------------------------+
 |  digital agriculture / precision systems / GIS   |
 +--------------------------------------------------+</div>
-    <div class="hero-name">Zachary Komarnisky<span class="cursor"></span></div>
+    <h1 class="hero-name"><span class="hero-name-inner">Zachary Komarnisky<span class="cursor" aria-hidden="true"></span></span></h1>
     <div class="hero-title">// Digital Agriculture &amp; Applied Research</div>
-    <p class="hero-desc">Student and researcher at Olds College of Agriculture &amp; Technology working alongside every point in the agriculture data pipeline — from data collection to spatial and farm intelligence analysis. I aim to provide open-source solutions for the mess of agriculture data to improve the spatial analysis possible in Canadian agriculture.</p>
+    <p class="hero-desc">I build open-source tools that close the gap between raw field data and something farmers and researchers can actually use — eight shipped so far, from QGIS plugins to a graph neural network research pipeline. Digital Agriculture student and research assistant at Olds College of Agriculture &amp; Technology.</p>
     <div class="hero-links">
       <a href="#projects" class="btn btn-primary">[ view work ]</a>
       <a href="#contact" class="btn">[ contact ]</a>
-      <a href="resume_2026.pdf" class="btn" target="_blank" rel="noopener noreferrer">[ resume.pdf ]</a>
+      <a href="resume.pdf?v=2026" class="btn" target="_blank" rel="noopener noreferrer">[ resume.pdf ]</a>
     </div>
   </section>
 
   <section id="about">
-    <div class="sec-head"><span class="sec-num">01.</span> about</div>
+    <h2 class="sec-head"><span class="sec-num">01.</span> about</h2>
     <div class="about-grid fade-in">
       <div class="about-text">
-        <p>I'm a Digital Agriculture student at Olds College — my time is spent in the field or in the office analyzing the data. I spent last summer at the Olds College Centre for Innovation collecting data via drones, soil probes, GPS equipment, and many more sensors. But my favorite part is then making sense of all that data. That gap between unusable raw field data and something actually useful is what drives most of my work.</p>
-        <p>Right now I'm building RETA, an open-source toolkit for cleaning agricultural geo-spatial data such as soil and yield data, and its machine learning extension RETA_ML, which uses graph neural networks to detect spatial outliers in field sensor data.</p>
+        <p>I'm a Digital Agriculture student at Olds College — my time is spent in the field or in the office analyzing the data. I work summers at the Olds College Centre for Innovation collecting data via drones, soil probes, GPS equipment, and many more sensors. But my favourite part is then making sense of all that data. That gap between unusable raw field data and something actually useful is what drives most of my work.</p>
+        <p>Right now I'm building RETA, an open-source toolkit for cleaning agricultural geospatial data such as soil and yield data, and its machine learning extension RETA_ML, which uses graph neural networks to detect spatial outliers in field sensor data. They anchor a family of eight open-source tools I've built for field-data workflows — from drone-imagery sorting (Perch) to weekly crop-monitoring deliverables (Magpie).</p>
         <p>Based in Carstairs, Alberta.</p>
         <div style="margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;">
           <span style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--fg-dim);margin-right:0.25rem;">// interests</span>
@@ -321,11 +400,11 @@
   </section>
 
   <section id="skills">
-    <div class="sec-head"><span class="sec-num">02.</span> skills</div>
-    <div class="divider">----[ technical stack ]----</div>
+    <h2 class="sec-head"><span class="sec-num">02.</span> skills</h2>
+    <div class="divider" aria-hidden="true">----[ technical stack ]----</div>
     <div class="skills-grid fade-in">
       <div class="skill-group">
-        <div class="skill-group-title">// GIS &amp; Remote Sensing</div>
+        <h3 class="skill-group-title">// GIS &amp; Remote Sensing</h3>
         <ul class="skill-list">
           <li>QGIS</li>
           <li>ArcGIS</li>
@@ -340,7 +419,7 @@
         </ul>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">// Programming</div>
+        <h3 class="skill-group-title">// Programming</h3>
         <ul class="skill-list">
           <li>Python</li>
           <li>Pandas / NumPy</li>
@@ -352,7 +431,7 @@
         </ul>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">// Precision Ag</div>
+        <h3 class="skill-group-title">// Precision Ag</h3>
         <ul class="skill-list">
           <li>Variable rate application</li>
           <li>SMS Advanced</li>
@@ -365,29 +444,29 @@
         </ul>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">// Tools &amp; Platforms</div>
+        <h3 class="skill-group-title">// Tools &amp; Platforms</h3>
         <ul class="skill-list">
           <li>Linux (Ubuntu)</li>
           <li>Git / GitHub</li>
           <li>Cursor (AI editor)</li>
           <li>PyCharm</li>
-          <li>Google Suite</li>
-          <li>Microsoft Windows Suite</li>
-          <li>LibreOffice Suite</li>
+          <li>Google Workspace</li>
+          <li>Microsoft Office</li>
+          <li>LibreOffice</li>
         </ul>
       </div>
     </div>
   </section>
 
   <section id="projects">
-    <div class="sec-head"><span class="sec-num">03.</span> projects</div>
-    <div class="divider">----[ selected work ]----</div>
+    <h2 class="sec-head"><span class="sec-num">03.</span> projects</h2>
+    <div class="divider" aria-hidden="true">----[ selected work ]----</div>
     <div class="projects-grid fade-in">
       <div class="project-card">
-        <div class="project-tag">// project &mdash; 2025</div>
-        <div class="project-name">CropCore</div>
+        <div class="project-tag">// pipeline &mdash; 2025</div>
+        <h3 class="project-name">CropCore</h3>
         <div class="project-desc">Desktop analytics pipeline for Canadian prairie fields (AB, SK, MB) — consolidates Sentinel-2 satellite imagery, weather, elevation, and soil data into multi-format farm reports with linear regression yield forecasting for wheat, barley, and canola.</div>
-        <button class="project-detail-btn" data-target="cropcore-expand">[+ details]</button>
+        <button class="project-detail-btn" data-target="cropcore-expand" aria-expanded="false" aria-controls="cropcore-expand">[+ details]</button>
         <div class="project-expand" id="cropcore-expand">
           <div>
             <div class="project-expand-label">// data sources</div>
@@ -412,13 +491,13 @@
           </div>
         </div>
         <div class="project-stack"><span class="tag">Python</span><span class="tag">Sentinel-2</span><span class="tag">NDVI</span><span class="tag">GeoPandas</span><span class="tag">QGIS</span><span class="tag">Open-Meteo</span></div>
-        <a href="https://github.com/DOZER3530-Fishing/CropCore" class="project-link" target="_blank" rel="noopener noreferrer">[ view project ] &rarr;</a>
+        <a href="https://github.com/DOZER3530-Fishing/CropCore" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="View CropCore on GitHub">[ view project ] &rarr;</a>
       </div>
       <div class="project-card">
         <div class="project-tag">// research &mdash; 2025</div>
-        <div class="project-name">RETA</div>
+        <h3 class="project-name">RETA</h3>
         <div class="project-desc">Unified framework for cleaning yield monitor and spatial agricultural data — removes operational, global, and local errors via a sequential CRS-aware pipeline, deployable as a QGIS Processing plugin or headless Python script.</div>
-        <button class="project-detail-btn" data-target="reta-expand">[+ details]</button>
+        <button class="project-detail-btn" data-target="reta-expand" aria-expanded="false" aria-controls="reta-expand">[+ details]</button>
         <div class="project-expand" id="reta-expand">
           <div>
             <div class="project-expand-label">// pipeline</div>
@@ -436,17 +515,17 @@
           <div>
             <div class="project-expand-label">// output</div>
             <div class="project-expand-row">Filtered layer with filtering_category + error_reason per point</div>
-            <div class="project-expand-row">Color-coded: Red=Operational, Orange=Global, Yellow=Local, Green=Clean</div>
+            <div class="project-expand-row">Colour-coded: Red=Operational, Orange=Global, Yellow=Local, Green=Clean</div>
           </div>
         </div>
         <div class="project-stack"><span class="tag">Python</span><span class="tag">QGIS</span><span class="tag">GeoPandas</span><span class="tag">pyproj</span><span class="tag">Spatial Analysis</span></div>
-        <a href="https://github.com/Dozer3530/RETA" class="project-link" target="_blank" rel="noopener noreferrer">[ view project ] &rarr;</a>
+        <a href="https://github.com/Dozer3530/RETA" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="View RETA on GitHub">[ view project ] &rarr;</a>
       </div>
       <div class="project-card">
         <div class="project-tag">// research &mdash; 2025</div>
-        <div class="project-name">RETA_ML</div>
+        <h3 class="project-name">RETA_ML</h3>
         <div class="project-desc">GNN-based outlier detection built on the RETA pipeline — classifies yield monitor errors into 4 categories using a HeteroGAT model with temporal, spatial, and transect graph edges. No QGIS dependency; pure Python/GeoPandas preprocessing.</div>
-        <button class="project-detail-btn" data-target="reta-ml-expand">[+ details]</button>
+        <button class="project-detail-btn" data-target="reta-ml-expand" aria-expanded="false" aria-controls="reta-ml-expand">[+ details]</button>
         <div class="project-expand" id="reta-ml-expand">
           <div>
             <div class="project-expand-label">// architecture</div>
@@ -470,14 +549,14 @@
           </div>
         </div>
         <div class="project-stack"><span class="tag">PyTorch</span><span class="tag">PyG</span><span class="tag">HeteroGAT</span><span class="tag">XGBoost</span><span class="tag">Optuna</span><span class="tag">GeoPandas</span></div>
-        <a href="https://github.com/Dozer3530/RETA_ML" class="project-link" target="_blank" rel="noopener noreferrer">[ view project ] &rarr;</a>
+        <a href="https://github.com/Dozer3530/RETA_ML" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="View RETA_ML on GitHub">[ view project ] &rarr;</a>
       </div>
 
       <div class="project-card">
         <div class="project-tag">// tool &mdash; 2026</div>
-        <div class="project-name">Perch</div>
+        <h3 class="project-name">Perch</h3>
         <div class="project-desc">Windows GUI for sorting multispectral drone imagery from MicaSense cameras into band-specific folders — auto-detects sensor model from EXIF metadata, parallel copy/move with live progress tracking and ETA.</div>
-        <button class="project-detail-btn" data-target="perch-expand">[+ details]</button>
+        <button class="project-detail-btn" data-target="perch-expand" aria-expanded="false" aria-controls="perch-expand">[+ details]</button>
         <div class="project-expand" id="perch-expand">
           <div>
             <div class="project-expand-label">// features</div>
@@ -495,14 +574,14 @@
           </div>
         </div>
         <div class="project-stack"><span class="tag">Python</span><span class="tag">CustomTkinter</span><span class="tag">PyInstaller</span><span class="tag">MicaSense</span><span class="tag">EXIF</span></div>
-        <a href="https://github.com/Dozer3530/Perch" class="project-link" target="_blank" rel="noopener noreferrer">[ view project ] &rarr;</a>
+        <a href="https://github.com/Dozer3530/Perch" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="View Perch on GitHub">[ view project ] &rarr;</a>
       </div>
 
       <div class="project-card">
         <div class="project-tag">// tool &mdash; 2026</div>
-        <div class="project-name">Plover</div>
+        <h3 class="project-name">Plover</h3>
         <div class="project-desc">QGIS plugin that solves the Traveling Salesperson Problem for field routing — generates the shortest tour visiting all waypoints while respecting field boundaries and interior obstacles like sloughs and exclusion zones.</div>
-        <button class="project-detail-btn" data-target="plover-expand">[+ details]</button>
+        <button class="project-detail-btn" data-target="plover-expand" aria-expanded="false" aria-controls="plover-expand">[+ details]</button>
         <div class="project-expand" id="plover-expand">
           <div>
             <div class="project-expand-label">// algorithm</div>
@@ -520,14 +599,14 @@
           </div>
         </div>
         <div class="project-stack"><span class="tag">Python</span><span class="tag">QGIS</span><span class="tag">Dijkstra</span><span class="tag">TSP</span><span class="tag">GeoPandas</span></div>
-        <a href="https://github.com/Dozer3530/Plover" class="project-link" target="_blank" rel="noopener noreferrer">[ view project ] &rarr;</a>
+        <a href="https://github.com/Dozer3530/Plover" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="View Plover on GitHub">[ view project ] &rarr;</a>
       </div>
 
       <div class="project-card">
         <div class="project-tag">// tool &mdash; 2026</div>
-        <div class="project-name">Lapwing</div>
+        <h3 class="project-name">Lapwing</h3>
         <div class="project-desc">Sentinel-2 L2A satellite imagery downloader for agricultural field boundaries — retrieves all-time, cloud-filtered scenes and outputs RGB, NDVI, NDWI, False Color, and DEM as analysis-ready GeoTIFFs clipped to the field.</div>
-        <button class="project-detail-btn" data-target="lapwing-expand">[+ details]</button>
+        <button class="project-detail-btn" data-target="lapwing-expand" aria-expanded="false" aria-controls="lapwing-expand">[+ details]</button>
         <div class="project-expand" id="lapwing-expand">
           <div>
             <div class="project-expand-label">// outputs</div>
@@ -544,14 +623,14 @@
           </div>
         </div>
         <div class="project-stack"><span class="tag">Python</span><span class="tag">Sentinel-2</span><span class="tag">NDVI</span><span class="tag">NDWI</span><span class="tag">Copernicus</span><span class="tag">GeoTIFF</span></div>
-        <a href="https://github.com/Dozer3530/Lapwing" class="project-link" target="_blank" rel="noopener noreferrer">[ view project ] &rarr;</a>
+        <a href="https://github.com/Dozer3530/Lapwing" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="View Lapwing on GitHub">[ view project ] &rarr;</a>
       </div>
 
       <div class="project-card">
         <div class="project-tag">// tool &mdash; 2026</div>
-        <div class="project-name">Magpie</div>
+        <h3 class="project-name">Magpie</h3>
         <div class="project-desc">Weekly crop-monitoring package builder — merges Survey123 field observations, PT2R lab nutrient data, and Pest ID bug-count feeds into per-crop Excel and GeoPackage deliverables, with fixed monitoring points per crop and zipped weekly exports.</div>
-        <button class="project-detail-btn" data-target="magpie-expand">[+ details]</button>
+        <button class="project-detail-btn" data-target="magpie-expand" aria-expanded="false" aria-controls="magpie-expand">[+ details]</button>
         <div class="project-expand" id="magpie-expand">
           <div>
             <div class="project-expand-label">// data sources</div>
@@ -573,14 +652,14 @@
           </div>
         </div>
         <div class="project-stack"><span class="tag">Python</span><span class="tag">PySide6</span><span class="tag">FastAPI</span><span class="tag">Survey123</span><span class="tag">GeoPandas</span><span class="tag">SQLite</span></div>
-        <a href="https://github.com/Dozer3530/Magpie" class="project-link" target="_blank" rel="noopener noreferrer">[ view project ] &rarr;</a>
+        <a href="https://github.com/Dozer3530/Magpie" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="View Magpie on GitHub">[ view project ] &rarr;</a>
       </div>
 
       <div class="project-card">
         <div class="project-tag">// tool &mdash; 2026</div>
-        <div class="project-name">Kestrel</div>
+        <h3 class="project-name">Kestrel</h3>
         <div class="project-desc">Desktop geospatial data inspector that diagnoses why layers fail to display in QGIS — a read-only CRS/UTM sanity-checker that identifies coordinate reference system issues and rendering failures without modifying files.</div>
-        <button class="project-detail-btn" data-target="kestrel-expand">[+ details]</button>
+        <button class="project-detail-btn" data-target="kestrel-expand" aria-expanded="false" aria-controls="kestrel-expand">[+ details]</button>
         <div class="project-expand" id="kestrel-expand">
           <div>
             <div class="project-expand-label">// diagnostics</div>
@@ -602,110 +681,124 @@
           </div>
         </div>
         <div class="project-stack"><span class="tag">Python</span><span class="tag">PySide6</span><span class="tag">GDAL</span><span class="tag">rasterio</span><span class="tag">PROJ</span><span class="tag">PyInstaller</span></div>
-        <a href="https://github.com/Dozer3530/Kestrel" class="project-link" target="_blank" rel="noopener noreferrer">[ view project ] &rarr;</a>
+        <a href="https://github.com/Dozer3530/Kestrel" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="View Kestrel on GitHub">[ view project ] &rarr;</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">// github</div>
+        <h3 class="project-name">More on GitHub</h3>
+        <div class="project-desc">Experiments, coursework, and works in progress — including this site, hand-built with 12 canvas-rendered ASCII galaxies and zero frameworks. Everything lives on GitHub.</div>
+        <div class="project-stack"><span class="tag">Open Source</span><span class="tag">MIT</span></div>
+        <a href="https://github.com/Dozer3530?tab=repositories" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="View all repositories on GitHub">[ all repositories ] &rarr;</a>
       </div>
 
     </div>
   </section>
 
   <section id="experience">
-    <div class="sec-head"><span class="sec-num">04.</span> experience</div>
-    <div class="divider">----[ work history ]----</div>
+    <h2 class="sec-head"><span class="sec-num">04.</span> experience</h2>
+    <div class="divider" aria-hidden="true">----[ work history ]----</div>
     <div class="cert-list fade-in">
 
-      <div class="cert-item" style="grid-template-columns: auto 1fr auto;">
-        <div class="cert-glyph">[>]</div>
+      <div class="cert-item">
+        <div class="cert-glyph" aria-hidden="true">[>]</div>
         <div class="cert-info">
-          <div class="cert-name">Research Assistant</div>
+          <h3 class="cert-name">Research Assistant</h3>
           <div class="cert-issuer">Olds College Centre for Innovation (OCCI) &mdash; Olds, AB</div>
           <div class="cert-issuer" style="margin-top:6px;font-size:11px;line-height:1.6;color:var(--fg-dim);">
-            Collaborated with senior researchers and industry partners on applied research projects.
-            Collected field data using drones, soil moisture probes, and GPS equipment to monitor
-            crop health. Provided technical support for ag-tech devices and sensors in the field.
+            Collaborate with senior researchers and industry partners on applied research projects.
+            Collect field data using drones, soil moisture probes, and GPS equipment to monitor
+            crop health, and provide technical support for ag-tech devices and sensors in the field.
+            Built internal tooling now used for weekly crop-monitoring deliverables and
+            drone-imagery processing (Magpie, Perch).
           </div>
         </div>
-        <div class="cert-year">2025</div>
+        <div class="cert-year">2025&ndash;present</div>
       </div>
 
-      <div class="cert-item" style="grid-template-columns: auto 1fr auto;">
-        <div class="cert-glyph">[>]</div>
+      <div class="cert-item">
+        <div class="cert-glyph" aria-hidden="true">[>]</div>
         <div class="cert-info">
-          <div class="cert-name">Seasonal Laborer — Operational Services</div>
+          <h3 class="cert-name">Seasonal Labourer &mdash; Operational Services</h3>
           <div class="cert-issuer">Town of Carstairs &mdash; Carstairs, AB</div>
         </div>
-        <div class="cert-year">2022–2024</div>
+        <div class="cert-year">2022&ndash;2024</div>
       </div>
 
     </div>
   </section>
 
   <section id="certifications">
-    <div class="sec-head"><span class="sec-num">05.</span> certifications</div>
-    <div class="divider">----[ credentials ]----</div>
+    <h2 class="sec-head"><span class="sec-num">05.</span> education &amp; certifications</h2>
+    <div class="divider" aria-hidden="true">----[ credentials ]----</div>
     <div class="cert-list fade-in">
-      <a href="https://www.oldscollege.ca/programs/areas-of-interest/agriculture-technology/bachelor-of-digital-agriculture.html" class="cert-item" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
-        <div class="cert-glyph">[*]</div>
-        <div class="cert-info"><div class="cert-name">Bachelor of Digital Agriculture</div><div class="cert-issuer">Olds College of Agriculture &amp; Technology &mdash; expected 2027</div></div>
+      <a href="https://www.oldscollege.ca/programs/areas-of-interest/agriculture-technology/bachelor-of-digital-agriculture.html" class="cert-item" target="_blank" rel="noopener noreferrer" style="text-decoration:none;" aria-label="Bachelor of Digital Agriculture program at Olds College">
+        <div class="cert-glyph" aria-hidden="true">[*]</div>
+        <div class="cert-info"><h3 class="cert-name">Bachelor of Digital Agriculture</h3><div class="cert-issuer">Olds College of Agriculture &amp; Technology &mdash; expected 2027</div></div>
         <div class="cert-year">in progress</div>
       </a>
       <div class="cert-item">
-        <div class="cert-glyph">[*]</div>
-        <div class="cert-info"><div class="cert-name">Co-Curricular Record — Student Research Experience</div><div class="cert-issuer">Olds College of Agriculture &amp; Technology</div></div>
+        <div class="cert-glyph" aria-hidden="true">[*]</div>
+        <div class="cert-info"><h3 class="cert-name">Co-Curricular Record &mdash; Student Research Experience</h3><div class="cert-issuer">Olds College of Agriculture &amp; Technology</div></div>
         <div class="cert-year">2026</div>
       </div>
       <div class="cert-item">
-        <div class="cert-glyph">[*]</div>
-        <div class="cert-info"><div class="cert-name">Small RPAS Pilot Certificate — Basic Operations (VLOS)</div><div class="cert-issuer">Transport Canada &mdash; PC2516275416 / TC2516228123</div></div>
+        <div class="cert-glyph" aria-hidden="true">[*]</div>
+        <div class="cert-info"><h3 class="cert-name">Small RPAS Pilot Certificate &mdash; Basic Operations (VLOS)</h3><div class="cert-issuer">Transport Canada</div></div>
         <div class="cert-year">2025</div>
       </div>
     </div>
   </section>
 
   <section id="contact">
-    <div class="sec-head"><span class="sec-num">06.</span> contact</div>
+    <h2 class="sec-head"><span class="sec-num">06.</span> contact</h2>
     <div class="contact-wrap fade-in">
       <div class="contact-text">
-        <p>Open to research collaborations, precision agriculture projects, and opportunities in the digital agriculture space.</p>
+        <p>Open to research collaborations and precision agriculture projects — and currently seeking an internship in AI and agricultural data systems.</p>
         <p>Best reached via email or LinkedIn.</p>
-        <div style="margin-top:2rem;font-family:var(--font-mono);font-size:11px;color:var(--fg-dim);white-space:pre;line-height:1.6;">+---------------------+
-| status: open to     |
-| new opportunities   |
-+---------------------+</div>
+        <div style="margin-top:2rem;font-family:var(--font-mono);font-size:11px;color:var(--fg-dim);white-space:pre;line-height:1.6;" aria-hidden="true">+----------------------+
+| status: seeking      |
+| ai / ag-data         |
+| internship           |
++----------------------+</div>
       </div>
       <div class="contact-links">
-        <div class="contact-link" style="pointer-events:none;">
-          <div class="contact-link-glyph">@</div>
-          <div class="contact-link-label"><a href="mailto:zachkom@telus.net" style="color:inherit;text-decoration:none;">email</a></div>
-          <div class="contact-link-val" style="display:flex;align-items:center;gap:8px;">
-            zachkom@telus.net
-            <button onclick="copyEmail(this)" title="Copy email" style="pointer-events:all;background:none;border:none;cursor:pointer;padding:2px;color:var(--fg-dim);transition:color 0.2s;flex-shrink:0;" aria-label="Copy email address">
-              <svg id="copyIcon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="9" y="9" width="13" height="13" rx="2"/>
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-              </svg>
-            </button>
-          </div>
+        <div class="contact-link contact-link-email">
+          <a href="mailto:zachkom@telus.net" class="contact-mail">
+            <div class="contact-link-glyph" aria-hidden="true">@</div>
+            <div class="contact-link-label">email</div>
+            <div class="contact-link-val">zachkom@telus.net</div>
+          </a>
+          <button onclick="copyEmail(this)" title="Copy email" class="copy-btn" aria-label="Copy email address">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="9" y="9" width="13" height="13" rx="2"/>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+          </button>
+          <span id="copyStatus" class="visually-hidden" aria-live="polite"></span>
         </div>
 
         <a href="https://github.com/Dozer3530" class="contact-link" target="_blank" rel="noopener noreferrer">
-          <div class="contact-link-glyph">&lt;/&gt;</div>
+          <div class="contact-link-glyph" aria-hidden="true">&lt;/&gt;</div>
           <div class="contact-link-label">github</div>
           <div class="contact-link-val">github.com/Dozer3530</div>
         </a>
         <a href="https://www.linkedin.com/in/zachary-komarnisky-211b8b408/" class="contact-link" target="_blank" rel="noopener noreferrer">
-          <div class="contact-link-glyph">in</div>
+          <div class="contact-link-glyph" aria-hidden="true">in</div>
           <div class="contact-link-label">linkedin</div>
-          <div class="contact-link-val">linkedin.com/in/zachary-komarnisky</div>
+          <div class="contact-link-val">linkedin.com/in/zachary-komarnisky-211b8b408</div>
         </a>
         </div>
     </div>
   </section>
 
-</div>
+</main>
 
 <footer>
-  <span>/*</span> zachary komarnisky <span>--</span> digital agriculture <span>--</span> olds, ab <span>*/</span>
+  <span aria-hidden="true">/*</span> zachary komarnisky <span aria-hidden="true">--</span> digital agriculture <span aria-hidden="true">--</span> carstairs, ab <span aria-hidden="true">--</span> <a href="https://github.com/Dozer3530/Dozer3530.github.io" target="_blank" rel="noopener noreferrer" style="color:var(--fg-dim);">view source</a> <span aria-hidden="true">*/</span>
 </footer>
+
+<noscript><style>.fade-in{opacity:1;transform:none}</style></noscript>
 
 <script>
 // ── Faithful reimplementation of the asciiart.eu rotating galaxy algorithm ──
@@ -780,7 +873,8 @@ function makeGalaxy(canvas, cfg) {
 
   function render(ts) {
     if (!lastTs) lastTs = ts;
-    const dt = (ts - lastTs) / 1000;
+    // Clamp dt so returning from a hidden tab doesn't snap the rotation
+    const dt = Math.min((ts - lastTs) / 1000, 0.1);
     lastTs   = ts;
     angle   += cfg.speed * dt * cfg.direction;
 
@@ -830,11 +924,11 @@ function makeGalaxy(canvas, cfg) {
     }
 
     ctx.globalAlpha = 1;
-    requestAnimationFrame(render);
   }
 
-  requestAnimationFrame(render);
-  return { resize };
+  // No self-scheduling: the shared master loop drives all galaxies,
+  // so respawning (e.g. on resize) can never leak orphaned RAF loops.
+  return { render, resize };
 }
 
 // ── LAYOUT ──
@@ -864,10 +958,13 @@ const GALAXY_DEFS = [
 ];
 
 const instances = [];
+const activeGalaxies = [];
+const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function spawnGalaxies() {
   container.innerHTML = '';
   instances.length = 0;
+  activeGalaxies.length = 0;
 
   const wrap   = pageWrap.getBoundingClientRect();
   const leftX  = wrap.left;
@@ -884,15 +981,20 @@ function spawnGalaxies() {
     const { size, side, vt, cfg } = def;
     const halfSize = size / 2;
 
+    // Centre of galaxy is `inset` px from the content edge, clamped on-screen.
+    // If the clamp bounds invert (galaxy larger than the side room), skip it
+    // entirely rather than letting it paint over the content column.
     let x;
     if (side === 'left') {
       if (leftRoom < 60) continue;
-      // Centre of galaxy is `inset` px from the left edge of content
-      // Clamped so it doesn't go off-screen
-      x = clamp(leftX - halfSize - def.inset, margin, leftX - margin - halfSize);
+      const lo = margin, hi = leftX - margin - halfSize;
+      if (hi < lo) continue;
+      x = clamp(leftX - halfSize - def.inset, lo, hi);
     } else {
       if (rightRoom < 60) continue;
-      x = clamp(rightX - halfSize + def.inset, rightX - halfSize + margin, vw - size - margin);
+      const lo = rightX - halfSize + margin, hi = vw - size - margin;
+      if (hi < lo) continue;
+      x = clamp(rightX - halfSize + def.inset, lo, hi);
     }
 
     const y = window.innerHeight * (vt / 100) - halfSize;
@@ -910,7 +1012,7 @@ function spawnGalaxies() {
     wrap2.appendChild(canvas);
     container.appendChild(wrap2);
 
-    makeGalaxy(canvas, {
+    const galaxy = makeGalaxy(canvas, {
       arms:      cfg.arms,
       count:     cfg.count,
       speed:     (cfg.speed * Math.PI) / 180,
@@ -922,8 +1024,14 @@ function spawnGalaxies() {
       direction: cfg.dir,
     });
 
-    wrap2.dataset.cx = x + size / 2;
-    wrap2.dataset.cy = y + size / 2;
+    if (REDUCED_MOTION) {
+      galaxy.render(0); // draw one static frame, never animate
+    } else {
+      activeGalaxies.push(galaxy);
+    }
+
+    wrap2._cx = x + halfSize;
+    wrap2._cy = y + halfSize;
     instances.push(wrap2);
     // Stagger fade-in
     setTimeout(() => wrap2.classList.add('visible'), 100 + instances.length * 120);
@@ -931,45 +1039,69 @@ function spawnGalaxies() {
 }
 
 spawnGalaxies();
-window.addEventListener('resize', () => { spawnGalaxies(); });
 
-// ── GALAXY GRAVITY ──
+// Debounced resize: close the mobile menu (the hamburger disappears at
+// desktop widths) and respawn galaxies once the drag settles.
+let resizeTimer;
+window.addEventListener('resize', () => {
+  closeMobileMenu();
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(spawnGalaxies, 200);
+});
+
+// ── MASTER LOOP: galaxies + cursor gravity, one RAF, ~30fps cap ──
 let cursorX = window.innerWidth / 2;
 let cursorY = window.innerHeight / 2;
 window.addEventListener('mousemove', e => { cursorX = e.clientX; cursorY = e.clientY; });
 
-(function gravityLoop() {
+const FRAME_MS = 32; // ~30fps — motion is dt-based so speed is unaffected
+let lastMaster = 0;
+
+function masterLoop(ts) {
+  requestAnimationFrame(masterLoop);
+  if (ts - lastMaster < FRAME_MS) return;
+  lastMaster = ts;
+
+  for (const g of activeGalaxies) g.render(ts);
+
   for (const el of instances) {
-    const cx = parseFloat(el.dataset.cx || 0);
-    const cy = parseFloat(el.dataset.cy || 0);
-    const dx = cursorX - cx;
-    const dy = cursorY - cy;
+    const dx = cursorX - el._cx;
+    const dy = cursorY - el._cy;
     const dist = Math.sqrt(dx * dx + dy * dy) || 1;
     const strength = 28 * Math.max(0, 1 - dist / 500);
     const targetX = (dx / dist) * strength;
     const targetY = (dy / dist) * strength;
-    el._smX = lerp(el._smX || 0, targetX, 0.055);
-    el._smY = lerp(el._smY || 0, targetY, 0.055);
+    el._smX = lerp(el._smX || 0, targetX, 0.1);
+    el._smY = lerp(el._smY || 0, targetY, 0.1);
     el.style.transform = `translate(${el._smX}px, ${el._smY}px)`;
   }
-  requestAnimationFrame(gravityLoop);
-})();
+}
+
+if (!REDUCED_MOTION) requestAnimationFrame(masterLoop);
 
 // Hamburger menu
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
 hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('open');
+  const isOpen = hamburger.classList.toggle('open');
   mobileMenu.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', String(isOpen));
 });
 function closeMobileMenu() {
   hamburger.classList.remove('open');
   mobileMenu.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
 }
 
 // Copy email
 function copyEmail(btn) {
+  const status = document.getElementById('copyStatus');
+  if (!navigator.clipboard) {
+    if (status) status.textContent = 'Copy not available — email is zachkom@telus.net';
+    return;
+  }
   navigator.clipboard.writeText('zachkom@telus.net').then(() => {
+    if (status) status.textContent = 'Email address copied';
     const svg = btn.querySelector('svg');
     // Switch to checkmark
     svg.innerHTML = '<polyline points="20 6 9 17 4 12"/>';
@@ -985,27 +1117,34 @@ function copyEmail(btn) {
         btn.style.transition = '';
       }, 650);
     }, 900);
+  }).catch(() => {
+    if (status) status.textContent = 'Copy failed — email is zachkom@telus.net';
   });
 }
 
-// Theme toggle
+// Theme toggle (class lives on <html> so the head script can apply it pre-paint)
 const themeToggle = document.getElementById('themeToggle');
-if (localStorage.getItem('theme') === 'dark') {
-  document.body.classList.add('dark');
-  themeToggle.textContent = '[light]';
-}
-themeToggle.addEventListener('click', () => {
-  const isDark = document.body.classList.toggle('dark');
+function syncThemeButton() {
+  const isDark = document.documentElement.classList.contains('dark');
   themeToggle.textContent = isDark ? '[light]' : '[dark]';
+  themeToggle.setAttribute('aria-pressed', String(isDark));
+  themeToggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+}
+syncThemeButton();
+themeToggle.addEventListener('click', () => {
+  const isDark = document.documentElement.classList.toggle('dark');
   localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  syncThemeButton();
 });
 
-// Project detail toggles
+// Project detail toggles — exact height from scrollHeight, no clipping cap
 document.querySelectorAll('.project-detail-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const expand = document.getElementById(btn.dataset.target);
     const isOpen = expand.classList.toggle('open');
+    expand.style.maxHeight = isOpen ? expand.scrollHeight + 'px' : '';
     btn.textContent = isOpen ? '[- close]' : '[+ details]';
+    btn.setAttribute('aria-expanded', String(isOpen));
   });
 });
 
