@@ -348,6 +348,7 @@
     <li><a href="#projects">projects</a></li>
     <li><a href="#experience">experience</a></li>
     <li><a href="#certifications">certs</a></li>
+    <li><a href="#research">research</a></li>
     <li><a href="#contact">contact</a></li>
   </ul>
   <button id="themeToggle" class="theme-btn" aria-label="Switch to dark theme" aria-pressed="false">[dark]</button>
@@ -361,6 +362,7 @@
   <a href="#projects"       onclick="closeMobileMenu()">projects</a>
   <a href="#experience"     onclick="closeMobileMenu()">experience</a>
   <a href="#certifications" onclick="closeMobileMenu()">certs</a>
+  <a href="#research"       onclick="closeMobileMenu()">research</a>
   <a href="#contact"        onclick="closeMobileMenu()">contact</a>
 </div>
 
@@ -522,7 +524,7 @@
         <a href="https://github.com/Dozer3530/RETA" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="View RETA on GitHub">[ view project ] &rarr;</a>
       </div>
       <div class="project-card">
-        <div class="project-tag">// research &mdash; 2025</div>
+        <div class="project-tag">// research &mdash; 2025 &mdash; presented at ICPA/ConBAP 2026</div>
         <h3 class="project-name">RETA_ML</h3>
         <div class="project-desc">GNN-based outlier detection built on the RETA pipeline — classifies yield monitor errors into 4 categories using a HeteroGAT model with temporal, spatial, and transect graph edges. No QGIS dependency; pure Python/GeoPandas preprocessing.</div>
         <button class="project-detail-btn" data-target="reta-ml-expand" aria-expanded="false" aria-controls="reta-ml-expand">[+ details]</button>
@@ -546,6 +548,13 @@
             <div class="project-expand-row">Baselines: RETA threshold pipeline + XGBoost (no graph, same features)</div>
             <div class="project-expand-row">Per-class P/R/F1 + macro F1; confusion matrices per run</div>
             <div class="project-expand-row">K-means spatial split — augment train only, normalize train/val</div>
+          </div>
+          <div>
+            <div class="project-expand-label">// published results</div>
+            <div class="project-expand-row">Poster + paper at the 17th ICPA / 11th ConBAP, Porto Alegre, Brazil (Jul 2026)</div>
+            <div class="project-expand-row">~50,000-point annotated dataset across 3 sensors (EM38, Veris 3100, GreenStar)</div>
+            <div class="project-expand-row">Leave-one-sensor-out CV: tree-ensemble baselines (RF/XGBoost) reproduce clean readings well (F1 = 0.95) but transfer poorly on local spatial anomalies (F1 = 0.30)</div>
+            <div class="project-expand-row">That spatial-transfer gap is the direct motivation for RETA_ML's graph-based approach</div>
           </div>
         </div>
         <div class="project-stack"><span class="tag">PyTorch</span><span class="tag">PyG</span><span class="tag">HeteroGAT</span><span class="tag">XGBoost</span><span class="tag">Optuna</span><span class="tag">GeoPandas</span></div>
@@ -750,8 +759,33 @@
     </div>
   </section>
 
+  <section id="research">
+    <h2 class="sec-head"><span class="sec-num">06.</span> research &amp; publications</h2>
+    <div class="divider" aria-hidden="true">----[ presented work ]----</div>
+    <div class="cert-list fade-in">
+      <div class="cert-item">
+        <div class="cert-glyph" aria-hidden="true">[^]</div>
+        <div class="cert-info">
+          <h3 class="cert-name">Cross-sensor anomaly classification of on-the-go proximal soil and yield sensor data using tree-based machine learning</h3>
+          <div class="cert-issuer">Poster &amp; paper &mdash; 17th International Conference on Precision Agriculture &amp; 11th Brazilian Congress on Precision and Digital Agriculture (ICPA/ConBAP) &mdash; Porto Alegre, Brazil</div>
+          <div class="cert-issuer" style="margin-top:6px;font-size:11px;line-height:1.6;color:var(--fg-dim);">
+            With Felippe H. S. Karp (Olds College). Built an expert-annotated, ~50,000-point
+            dataset spanning three sensors (EM38, Veris 3100, GreenStar combine yield monitor)
+            and evaluated Random Forest and XGBoost under leave-one-sensor-out cross-validation.
+            Clean readings transferred reliably (F1 = 0.95), operational errors transferred
+            moderately (F1 = 0.52) &mdash; but local spatial anomalies transferred poorly (F1 = 0.30),
+            since tree-ensemble models don't represent spatial neighbourhood structure. That gap
+            is the direct research motivation behind RETA_ML's graph neural network approach.
+            Funded by an NSERC CCI Mobilize Grant.
+          </div>
+        </div>
+        <div class="cert-year">Jul 2026</div>
+      </div>
+    </div>
+  </section>
+
   <section id="contact">
-    <h2 class="sec-head"><span class="sec-num">06.</span> contact</h2>
+    <h2 class="sec-head"><span class="sec-num">07.</span> contact</h2>
     <div class="contact-wrap fade-in">
       <div class="contact-text">
         <p>Open to research collaborations and precision agriculture projects — and currently seeking an internship in AI and agricultural data systems.</p>
