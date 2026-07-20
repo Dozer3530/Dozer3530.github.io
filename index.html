@@ -1046,7 +1046,13 @@ let resizeTimer;
 window.addEventListener('resize', () => {
   closeMobileMenu();
   clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(spawnGalaxies, 200);
+  resizeTimer = setTimeout(() => {
+    spawnGalaxies();
+    // Re-measure any open detail panels so rewrapped content never clips
+    document.querySelectorAll('.project-expand.open').forEach(el => {
+      el.style.maxHeight = el.scrollHeight + 'px';
+    });
+  }, 200);
 });
 
 // ── MASTER LOOP: galaxies + cursor gravity, one RAF, ~30fps cap ──
