@@ -674,3 +674,38 @@ const io = new IntersectionObserver(entries => entries.forEach(e => {
 }), { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
 document.querySelectorAll('main section[id]').forEach(s => io.observe(s));
 </script>
+
+<!-- ═══════ THEME-COMPARE — TEMPORARY. Delete this whole block to remove. ═══════ -->
+<style>
+  #themeSwap {
+    position: fixed; right: 18px; bottom: 18px; z-index: 300;
+    font-family: var(--font); font-size: 12px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+    background: var(--paper); color: var(--ink); border: 3px solid var(--ink);
+    padding: 0.65rem 1rem; line-height: 1.3;
+    box-shadow: 5px 5px 0 var(--red); transition: background .15s, color .15s, box-shadow .15s;
+  }
+  #themeSwap:hover, #themeSwap:focus-visible { background: var(--ink); color: var(--paper); box-shadow: 5px 5px 0 var(--blue); }
+  #themeSwap b { display: block; font-weight: 700; }
+  #themeSwap small { display: block; font-size: 9px; font-weight: 500; opacity: .6; letter-spacing: .14em; }
+  @media (max-width: 640px) { #themeSwap { right: 10px; bottom: 10px; padding: .55rem .75rem; font-size: 11px; box-shadow: 4px 4px 0 var(--red); } }
+  @media print { #themeSwap { display: none; } }
+</style>
+<a href="index.html" id="themeSwap">
+  <b>View Terminal</b><small>compare designs</small>
+</a>
+<script>
+(function () {
+  var MAP = { about:'about', skills:'skills', work:'projects', experience:'experience',
+              education:'certifications', research:'research', contact:'contact' };
+  document.getElementById('themeSwap').addEventListener('click', function () {
+    var best = null, bd = Infinity;
+    document.querySelectorAll('main section[id]').forEach(function (s) {
+      var d = Math.abs(s.getBoundingClientRect().top - 90);
+      if (d < bd) { bd = d; best = s.id; }
+    });
+    if (best && MAP[best]) this.href = 'index.html#' + MAP[best];
+  });
+})();
+</script>
+<!-- ═══════ END THEME-COMPARE ═══════ -->
