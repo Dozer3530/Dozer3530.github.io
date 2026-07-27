@@ -186,6 +186,8 @@
   .project-link { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--accent); text-decoration: none; text-transform: uppercase; display: inline-flex; align-items: center; gap: 0.3rem; margin-top: 0.5rem; transition: color 0.2s; }
   .project-link:hover { color: var(--fg-bright); }
   .project-link-muted { color: var(--fg-dim); cursor: default; }
+  /* Spans the final grid row so an odd card count never leaves an empty cell */
+  .project-card-wide { grid-column: 1 / -1; }
   .project-detail-btn { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-dim); background: none; border: 1px solid var(--border); cursor: pointer; padding: 0.25rem 0.6rem; transition: all 0.2s; align-self: flex-start; margin-top: 0.25rem; }
   .project-detail-btn:hover { border-color: var(--accent); color: var(--fg-bright); }
   .project-expand { margin-top: 0.25rem; display: flex; flex-direction: column; gap: 0.75rem; max-height: 0; overflow: hidden; visibility: hidden; padding-top: 0; transition: max-height 0.35s ease, padding-top 0.35s ease, visibility 0s 0.35s; }
@@ -659,6 +661,35 @@
 
       <div class="project-card">
         <div class="project-tag">// tool &mdash; 2026</div>
+        <h3 class="project-name">Albatross</h3>
+        <div class="project-desc">Local Sentinel-2 field monitoring console — upload field boundaries and it auto-checks Copernicus for new acquisitions, downloads only the pixels inside each field, and builds an NDVI dashboard. All data stays on your machine.</div>
+        <button class="project-detail-btn" data-target="albatross-expand" aria-expanded="false" aria-controls="albatross-expand">[+ details]</button>
+        <div class="project-expand" id="albatross-expand">
+          <div>
+            <div class="project-expand-label">// monitoring</div>
+            <div class="project-expand-row">Auto-scans Copernicus Data Space for new Sentinel-2 L2A passes on dashboard load</div>
+            <div class="project-expand-row">NDVI from L2A surface reflectance: (B08 &minus; B04) / (B08 + B04) at 10 m</div>
+            <div class="project-expand-row">Cloud masking via SCL classes 3, 8, 9, 10 excluded from statistics</div>
+            <div class="project-expand-row">Clips to the field boundary — downloads field pixels, not whole scenes</div>
+          </div>
+          <div>
+            <div class="project-expand-label">// interface</div>
+            <div class="project-expand-row">Local web dashboard on 127.0.0.1; interactive map with toggleable overlays and opacity</div>
+            <div class="project-expand-row">Mean-NDVI timeline across passes with outlier filtering</div>
+            <div class="project-expand-row">Accepts GeoPackage, Shapefile, GeoJSON, KML, FlatGeobuf, GML</div>
+          </div>
+          <div>
+            <div class="project-expand-label">// outputs</div>
+            <div class="project-expand-row">float32 NDVI GeoTIFF, NDVI colormap PNG, true-colour PNG, scene-classification TIFF</div>
+            <div class="project-expand-row">SQLite store for fields, scenes, and credentials — nothing leaves the machine</div>
+          </div>
+        </div>
+        <div class="project-stack"><span class="tag">Python</span><span class="tag">Sentinel-2</span><span class="tag">Copernicus</span><span class="tag">NDVI</span><span class="tag">SQLite</span><span class="tag">Sentinel Hub API</span></div>
+        <a href="https://github.com/Dozer3530/Albatross" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="View project: Albatross on GitHub">[ view project ] &rarr;</a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-tag">// tool &mdash; 2026</div>
         <h3 class="project-name">Magpie</h3>
         <div class="project-desc">Weekly crop-monitoring package builder — merges Survey123 field observations, PT2R lab nutrient data, and Pest ID bug-count feeds into per-crop Excel and GeoPackage deliverables, with fixed monitoring points per crop and zipped weekly exports.</div>
         <button class="project-detail-btn" data-target="magpie-expand" aria-expanded="false" aria-controls="magpie-expand">[+ details]</button>
@@ -715,7 +746,7 @@
         <a href="https://github.com/Dozer3530/Kestrel" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="View project: Kestrel on GitHub">[ view project ] &rarr;</a>
       </div>
 
-      <div class="project-card">
+      <div class="project-card project-card-wide">
         <div class="project-tag">// github</div>
         <h3 class="project-name">More on GitHub</h3>
         <div class="project-desc">Experiments, coursework, and works in progress — including this site, hand-built with 12 canvas-rendered ASCII galaxies and zero frameworks. Everything lives on GitHub.</div>
