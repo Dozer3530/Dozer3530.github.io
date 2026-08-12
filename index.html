@@ -382,7 +382,7 @@
     <div class="about">
       <div>
         <p>I'm a Digital Agriculture student at Olds College. My time is split between the field and the analysis — I've spent two summers at the <b>Olds College Centre for Innovation</b> collecting data with drones, soil probes and GPS equipment. But the part I care about is what happens next: turning that mess into something usable.</p>
-        <p>My current focus is <b>Waxwing</b>, a management-zone builder that turns multi-year satellite imagery into soil sampling plans and variable-rate prescriptions. It joins <b>RETA</b>, an open-source toolkit for cleaning agricultural geospatial data, and its machine-learning extension <b>RETA-ML</b>, which uses graph neural networks to detect spatial outliers in field sensor data — a growing family of open-source tools for field-data workflows.</p>
+        <p>My current focus is the <b>RETA</b> research — an open-source toolkit for cleaning agricultural geospatial data, and its machine-learning extension <b>RETA-ML</b>, which uses graph neural networks to detect spatial outliers in field sensor data — alongside continuing work on <b>Kestrel</b>, a geospatial data inspector that diagnoses and repairs the CRS problems that stop layers from displaying. They sit in a growing family of open-source tools for field-data workflows.</p>
       </div>
       <div class="facts">
         <div class="fact"><span class="fact-k">Based</span><span class="fact-v">Carstairs, Alberta</span></div>
@@ -516,11 +516,13 @@
       <article class="proj">
         <div class="proj-top"><span class="proj-mark m-tr" aria-hidden="true"></span><span class="proj-kind">Tool · 2026</span></div>
         <h3>Kestrel</h3>
-        <p>Desktop geospatial data inspector that diagnoses why layers fail to display in QGIS — a read-only CRS and UTM sanity-checker that never modifies your files.</p>
-        <div class="tags"><span class="tag">Python</span><span class="tag">GDAL</span><span class="tag">PROJ</span></div>
+        <p>Desktop inspector that works out why a geospatial layer will not display in QGIS — then fixes it. Names the actual problem in plain language, and can assign a CRS, reproject, repair geometry or convert format. Originals are never touched; repairs write new files.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">GDAL</span><span class="tag">PROJ</span><span class="tag">rasterio</span><span class="tag">Inno Setup</span></div>
         <div class="panel" id="p-kestrel"><div class="panel-in">
-          <h4>Diagnostics</h4><ul role="list"><li>EPSG codes, UTM zones, datum and valid regions</li><li>Extent reprojected to WGS84 with map preview</li><li>Detects missing CRS, coordinate mismatch, antimeridian wrap</li></ul>
-          <h4>Inputs</h4><ul role="list"><li>Shapefile, GeoPackage, GeoJSON, KML/KMZ, GML, GPX</li><li>CSV/Excel with coordinates; rasters incl. GeoTIFF</li></ul>
+          <h4>Diagnoses</h4><ul role="list"><li>Missing or undefined CRS and absent .prj files</li><li>Coordinate/CRS mismatch — lat-lon values tagged as projected</li><li>Data outside its CRS validity zone, or the wrong UTM hemisphere</li><li>Empty layers, zero-area extents and Null Island coordinates</li><li>Invalid or self-intersecting geometry; clashing CRS between layers in one GeoPackage</li></ul>
+          <h4>Repairs</h4><ul role="list"><li>Assign a CRS without moving coordinates, or reproject to a new one</li><li>Validate and repair geometry</li><li>Convert between GeoPackage, Shapefile and GeoJSON</li><li>Turn a CSV or Excel coordinate table into a point layer</li></ul>
+          <h4>Inspection</h4><ul role="list"><li>EPSG code, UTM zone, datum and validity region; extent reprojected to WGS84</li><li>Interactive map preview — offline coastlines and borders, optional satellite imagery</li><li>Vector geometry type, feature count and field names; raster bands, data type, pixel size and NoData</li></ul>
+          <h4>Inputs &amp; distribution</h4><ul role="list"><li>Shapefile (zipped or plain), multi-layer GeoPackage, GeoJSON, KML/KMZ, GML, GPX, CSV/Excel, and rasters (GeoTIFF, IMG, VRT, JPEG2000)</li><li>Windows installer needing no admin rights, or a portable zip; right-click integration via --register</li></ul>
         </div></div>
         <div class="proj-foot">
           <button class="more" data-panel="p-kestrel" aria-expanded="false" aria-controls="p-kestrel">Details</button>
