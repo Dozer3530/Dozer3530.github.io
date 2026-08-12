@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zachary Komarnisky — Digital Agriculture &amp; Applied Research</title>
@@ -27,14 +30,29 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Zachary Komarnisky",
-  "jobTitle": "Digital Agriculture Student & Research Assistant",
-  "affiliation": { "@type": "CollegeOrUniversity", "name": "Olds College of Agriculture & Technology" },
-  "address": { "@type": "PostalAddress", "addressLocality": "Carstairs", "addressRegion": "AB", "addressCountry": "CA" },
-  "url": "https://dozer3530.github.io/",
-  "email": "zachkom@telus.net",
-  "sameAs": ["https://github.com/Dozer3530", "https://www.linkedin.com/in/zachary-komarnisky/"]
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://dozer3530.github.io/#person",
+      "name": "Zachary Komarnisky",
+      "jobTitle": "Digital Agriculture Student",
+      "affiliation": { "@type": "CollegeOrUniversity", "name": "Olds College of Agriculture & Technology" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Carstairs", "addressRegion": "AB", "addressCountry": "CA" },
+      "url": "https://dozer3530.github.io/",
+      "email": "zachkom@telus.net",
+      "sameAs": ["https://github.com/Dozer3530", "https://www.linkedin.com/in/zachary-komarnisky/"]
+    },
+    {
+      "@type": "ScholarlyArticle",
+      "name": "A Machine Learning Framework for Automated Anomaly Detection in Precision Agriculture Geospatial Data",
+      "author": [
+        { "@id": "https://dozer3530.github.io/#person" },
+        { "@type": "Person", "name": "Felippe H. S. Karp" }
+      ],
+      "datePublished": "2026-07",
+      "publisher": { "@type": "Organization", "name": "International Society of Precision Agriculture" }
+    }
+  ]
 }
 </script>
 <style>
@@ -182,7 +200,7 @@
   .fact-v { font-size: 15px; font-weight: 500; text-align: right; }
 
   /* ─────── SKILLS ─────── */
-  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 3px; background: var(--ink); border: 3px solid var(--ink); }
+  .skills { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; background: var(--ink); border: 3px solid var(--ink); }
   .skill { background: var(--paper); padding: 24px; }
   .skill h3 { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 3px solid var(--ink); }
   .skill:nth-child(1) h3 { border-color: var(--red); }
@@ -194,7 +212,7 @@
   .skill li { font-size: 15px; font-weight: 300; padding: 3px 0; }
 
   /* ─────── PROJECTS ─────── */
-  .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3px; background: var(--ink); border: 3px solid var(--ink); }
+  .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; background: var(--ink); border: 3px solid var(--ink); }
   .proj { background: var(--paper); padding: 26px; display: flex; flex-direction: column; }
   .proj-top { display: flex; align-items: center; gap: 11px; margin-bottom: 14px; }
   .proj-mark { width: 20px; height: 20px; flex-shrink: 0; }
@@ -253,10 +271,31 @@
   .foot-shapes { display: flex; gap: 7px; align-items: center; }
   .foot-shapes i { width: 13px; height: 13px; display: block; }
 
+  @media (max-width: 1156px) {
+    /* 5 tiles cannot divide into 3 or 4 columns without holes; 2 wide columns
+       + a full-width last tile keeps the ink-rule grid solid at every width */
+    .skills { grid-template-columns: repeat(2, 1fr); }
+    .skill:last-child { grid-column: 1 / -1; }
+  }
+  @media (max-width: 979px) {
+    .projects { grid-template-columns: repeat(2, 1fr); }
+    /* 9 regular cards -> the odd one out spans the row instead of leaving a hole */
+    .proj:nth-last-child(2) { grid-column: 1 / -1; }
+  }
   @media (max-width: 900px) {
     .hero-grid, .about, .contact { grid-template-columns: 1fr; }
     .compo { display: none; }
     .about, .contact { gap: 34px; }
+    /* 7 nav links overflow the bar below ~900px — collapse to the burger here */
+    nav ul { display: none; }
+    .burger { display: block; }
+    .mobile-menu.open { display: block; }
+  }
+  @media (max-width: 660px) {
+    .projects { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 540px) {
+    .skills { grid-template-columns: 1fr; }
   }
   @media (max-width: 720px) {
     nav ul { display: none; }
@@ -280,6 +319,8 @@
     .panel { transition: none; }
   }
 </style>
+</head>
+<body>
 
 <a href="#main" class="skip-link">Skip to content</a>
 
@@ -294,6 +335,7 @@
       <li><a href="#skills">Skills</a></li>
       <li><a href="#work">Work</a></li>
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
       <li><a href="#research">Research</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -307,6 +349,7 @@
   <a href="#skills" onclick="closeMenu()">Skills</a>
   <a href="#work" onclick="closeMenu()">Work</a>
   <a href="#experience" onclick="closeMenu()">Experience</a>
+  <a href="#education" onclick="closeMenu()">Education</a>
   <a href="#research" onclick="closeMenu()">Research</a>
   <a href="#contact" onclick="closeMenu()">Contact</a>
 </div>
@@ -339,12 +382,12 @@
     <div class="about">
       <div>
         <p>I'm a Digital Agriculture student at Olds College. My time is split between the field and the analysis — I've spent two summers at the <b>Olds College Centre for Innovation</b> collecting data with drones, soil probes and GPS equipment. But the part I care about is what happens next: turning that mess into something usable.</p>
-        <p>Right now I'm building <b>RETA</b>, an open-source toolkit for cleaning agricultural geospatial data, and its machine-learning extension <b>RETA-ML</b>, which uses graph neural networks to detect spatial outliers in field sensor data. They anchor a family of nine open-source tools for field-data workflows.</p>
+        <p>My current focus is <b>Waxwing</b>, a management-zone builder that turns multi-year satellite imagery into soil sampling plans and variable-rate prescriptions. It joins <b>RETA</b>, an open-source toolkit for cleaning agricultural geospatial data, and its machine-learning extension <b>RETA-ML</b>, which uses graph neural networks to detect spatial outliers in field sensor data — a growing family of open-source tools for field-data workflows.</p>
       </div>
       <div class="facts">
         <div class="fact"><span class="fact-k">Based</span><span class="fact-v">Carstairs, Alberta</span></div>
-        <div class="fact"><span class="fact-k">Degree</span><span class="fact-v">BSc Digital Agriculture<br>Expected 2027</span></div>
-        <div class="fact"><span class="fact-k">Role</span><span class="fact-v">Research Assistant, OCCI</span></div>
+        <div class="fact"><span class="fact-k">Degree</span><span class="fact-v">Bachelor of Digital Agriculture<br>Expected 2027</span></div>
+        <div class="fact"><span class="fact-k">Role</span><span class="fact-v">Research Assistant, OCCI<br>Summers 2025 &amp; 2026</span></div>
         <div class="fact"><span class="fact-k">Certified</span><span class="fact-v">RPAS Pilot (VLOS)<br>Transport Canada</span></div>
         <div class="fact"><span class="fact-k">Interests</span><span class="fact-v">Open source · Fishing<br>Agriculture · Technology</span></div>
       </div>
@@ -375,6 +418,22 @@
   <section class="sec" id="work">
     <div class="sec-head"><div class="sec-num n3">03</div><h2 class="sec-title">Work</h2></div>
     <div class="projects">
+
+      <article class="proj proj-wide">
+        <div class="proj-top"><span class="proj-mark m-tr" aria-hidden="true"></span><span class="proj-kind">Featured · 2026</span></div>
+        <h3>Waxwing</h3>
+        <p>Management-zone builder for Alberta and Saskatchewan fields — pulls multi-year Sentinel-2 NDVI history, finds where a field is consistently above or below its own average, and clusters it into zones. Carries through to soil sampling design and variable-rate fertilizer prescriptions.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">Sentinel-2</span><span class="tag">k-means</span><span class="tag">VRA</span></div>
+        <div class="panel" id="p-waxwing"><div class="panel-in">
+          <h4>Zoning</h4><ul role="list"><li>Growing-season NDVI history from 2017 onward via Copernicus, with quality gates for cloud, clear-pixel share and field NDVI</li><li>Weighted scene averaging; z-score, ratio, percentile or raw normalization</li><li>Balanced-breaks clustering with zone-size floors; silhouette analysis for zone count</li><li>Split-half and leave-one-year-out validation (Cohen's kappa)</li></ul>
+          <h4>Sampling &amp; prescriptions</h4><ul role="list"><li>Nine soil-sampling designs, from zone composite to conditioned Latin hypercube</li><li>Built-in sample-count calculator: n = (t·CV/D)² solved iteratively</li><li>Lab-result ANOVA per nutrient and N/P₂O₅/K₂O/S variable-rate prescriptions from provincial guidelines</li></ul>
+          <h4>Prairie-specific</h4><ul role="list"><li>Township-Range-Meridian boundary navigation; correct 486 × 483-chain survey grid</li><li>Soil-zone-aware nitrogen targets (Brown through Gray)</li><li>Optional yield monitor, soil EC and DEM-derivative layers; all data stays local</li></ul>
+        </div></div>
+        <div class="proj-foot">
+          <button class="more" data-panel="p-waxwing" aria-expanded="false" aria-controls="p-waxwing">Details</button>
+          <a class="go" href="https://github.com/Dozer3530/Waxwing" target="_blank" rel="noopener noreferrer" aria-label="View project: Waxwing on GitHub">GitHub →</a>
+        </div>
+      </article>
 
       <article class="proj">
         <div class="proj-top"><span class="proj-mark m-sq" aria-hidden="true"></span><span class="proj-kind">Pipeline · 2025</span></div>
@@ -475,7 +534,7 @@
         <p>QGIS plugin solving the travelling-salesperson problem for field routing — shortest tour across all waypoints while respecting boundaries and interior obstacles.</p>
         <div class="tags"><span class="tag">Python</span><span class="tag">QGIS</span><span class="tag">Dijkstra</span></div>
         <div class="panel" id="p-plover"><div class="panel-in">
-          <h4>Algorithm</h4><ul role="list"><li>Visibility graph respecting polygon holes</li><li>Dijkstra shortest paths between waypoints</li><li>Nearest-neighbour + 2-opt optimisation</li></ul>
+          <h4>Algorithm</h4><ul role="list"><li>Visibility graph respecting polygon holes</li><li>Dijkstra shortest paths between waypoints</li><li>Nearest-neighbour + 2-opt optimization</li></ul>
           <h4>Integration</h4><ul role="list"><li>QGIS 3.x and 4.x (Qt5/Qt6)</li><li>GeoPackage, Shapefile or GeoJSON output</li><li>Built for soil sampling and sensor verification</li></ul>
         </div></div>
         <div class="proj-foot">
@@ -660,8 +719,9 @@ function copyEmail(btn) {
   if (!navigator.clipboard) { if (s) s.textContent = 'Email is zachkom@telus.net'; return; }
   navigator.clipboard.writeText('zachkom@telus.net').then(() => {
     if (s) s.textContent = 'Email address copied';
-    const t = btn.textContent; btn.textContent = 'Copied';
-    setTimeout(() => { btn.textContent = t; }, 1400);
+    btn.textContent = 'Copied';
+    clearTimeout(btn._t);
+    btn._t = setTimeout(() => { btn.textContent = 'Copy'; }, 1400);
   }).catch(() => { if (s) s.textContent = 'Copy failed — email is zachkom@telus.net'; });
 }
 
@@ -672,4 +732,5 @@ const io = new IntersectionObserver(entries => entries.forEach(e => {
 }), { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
 document.querySelectorAll('main section[id]').forEach(s => io.observe(s));
 </script>
-
+</body>
+</html>
