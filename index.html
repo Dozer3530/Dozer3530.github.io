@@ -228,6 +228,7 @@
   .m-ci { background: var(--blue); border-radius: 50%; }
   .m-tr { width: 0; height: 0; border-left: 11px solid transparent; border-right: 11px solid transparent; border-bottom: 20px solid var(--yellow); }
   .proj-kind { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--grey); }
+  .feat-badge { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; background: var(--red); color: #fff; padding: 3px 9px; margin-left: auto; }
   .proj h3 { font-size: 25px; font-weight: 900; text-transform: uppercase; letter-spacing: -.015em; margin-bottom: 12px; line-height: 1; }
   .proj p { font-size: 15px; font-weight: 300; line-height: 1.5; flex: 1; margin-bottom: 16px; }
   .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
@@ -390,7 +391,7 @@
         <div class="eyebrow">Digital Agriculture &amp; Applied Research</div>
         <h1 class="name">Zachary <span class="l2">Komarnisky</span></h1>
         <p class="lede">I build <b>open-source tools</b> that close the gap between raw field data and something farmers and researchers can actually use.</p>
-        <p class="proof">Digital Agriculture student at Olds College · ten open-source tools on GitHub · ICPA/ConBAP 2026 poster</p>
+        <p class="proof">Digital Agriculture student at Olds College · open-source tools for field-data workflows · ICPA/ConBAP 2026 poster</p>
         <div class="btns">
           <a href="#work" class="btn btn-red">View Work</a>
           <a href="resume.pdf?v=2026" class="btn" target="_blank" rel="noopener noreferrer">Résumé</a>
@@ -444,6 +445,23 @@
   <section class="sec" id="work">
     <div class="sec-head"><div class="sec-num n3">03</div><h2 class="sec-title">Work</h2></div>
     <div class="projects">
+
+      <article class="proj proj-wide">
+        <div class="proj-top"><span class="proj-mark m-sq" aria-hidden="true"></span><span class="proj-kind">Tool · 2026</span><span class="feat-badge">Featured</span></div>
+        <h3>SMSLIBRE</h3>
+        <p>QGIS plugin that reads the data cards farm machinery writes — yield, as-applied, as-planted and boundaries — and turns them into styled map layers with every logged sensor channel kept as an attribute. The import Ag Leader SMS does, inside QGIS. Built for the Olds College Centre for Innovation Smart Farm.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">C#</span><span class="tag">.NET</span><span class="tag">QGIS</span><span class="tag">ADAPT</span><span class="tag">ISOXML</span><span class="tag">GeoPackage</span></div>
+        <div class="panel" id="p-smslibre"><div class="panel-in">
+          <h4>The gap it fills</h4><ul role="list"><li>QGIS is already good at maps, styling and analysis; the one thing it cannot do is read proprietary machine formats. This fills exactly that gap rather than rebuilding GIS features QGIS already does better</li><li>Runs the AgGateway ADAPT plugin suite — the same import engine SMS itself uses — plus readers written here for formats ADAPT does not cover, so one plugin spans several manufacturers</li></ul>
+          <h4>Format support</h4><ul role="list"><li>Working on real cards: John Deere GS2/GS3/GS4 (licensed SDK), ISO 11783 / ISOXML incl. New Holland and AGCO, Raven Slingshot via a reader written here, and field boundaries from any ADAPT source</li><li>Trimble AgData needs its own vendor licence; ADM, Climate FieldView and Precision Planting load but are untested on data</li></ul>
+          <h4>What comes out</h4><ul role="list"><li>An AGCO ISOXML harvest card yields 45 layers, 550,219 points and 46 channels — yield mass and volume, moisture, feeder throughput, rotor speed, header height, processor loss</li><li>A John Deere Gen4 seeding card yields 127 layers and up to 598 channels; New Holland ISOXML 59 layers and 544,167 points</li><li>Everything lands in a GeoPackage (EPSG:4326), styled on the meaningful channel with a quantile ramp classified on non-zero readings so headland zeros do not flatten the map</li></ul>
+          <h4>Architecture</h4><ul role="list"><li>Python QGIS plugin talks JSON over a subprocess to a self-contained .NET sidecar that hosts the ADAPT plugins and writes the GeoPackage</li><li>Loading a CLR inside the QGIS-bundled Python is fragile and a crash would take QGIS with it — the separate process avoids that and keeps the plugin cross-platform</li><li>QGIS 3.22+. Internal distribution: the John Deere SDK licence restricts use to internal purposes and forbids redistributing the licensed components</li></ul>
+        </div></div>
+        <div class="proj-foot">
+          <button class="more" data-panel="p-smslibre" aria-expanded="false" aria-controls="p-smslibre">Details</button>
+          <a class="go" href="https://github.com/Dozer3530/SMSLIBRE" target="_blank" rel="noopener noreferrer" aria-label="View project: SMSLIBRE on GitHub">GitHub →</a>
+        </div>
+      </article>
 
       <article class="proj proj-wide">
         <div class="proj-top"><span class="proj-mark m-tr" aria-hidden="true"></span><span class="proj-kind">Tool · 2026</span></div>
