@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zachary Komarnisky — Digital Agriculture &amp; Applied Research</title>
-<meta name="description" content="Digital Agriculture researcher building open-source tools for agricultural geospatial data: yield cleaning, GNN outlier detection, Sentinel-2 pipelines.">
+<meta name="description" content="RETA research on cleaning agricultural geospatial data, plus open-source tools for satellite management zones, variable-rate prescriptions and QGIS CRS repair.">
 <link rel="canonical" href="https://dozer3530.github.io/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://dozer3530.github.io/">
 <meta property="og:title" content="Zachary Komarnisky — Digital Agriculture &amp; Applied Research">
-<meta property="og:description" content="Open-source tools for agricultural geospatial data — yield cleaning, GNN outlier detection, Sentinel-2 pipelines, and field-data workflows.">
+<meta property="og:description" content="RETA research on cleaning agricultural geospatial data, plus open-source tools for satellite management zones, variable-rate prescriptions and QGIS CRS repair.">
 <meta property="og:image" content="https://dozer3530.github.io/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -18,9 +18,10 @@
 <meta property="og:locale" content="en_CA">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Zachary Komarnisky — Digital Agriculture &amp; Applied Research">
-<meta name="twitter:description" content="Open-source tools for agricultural geospatial data — yield cleaning, GNN outlier detection, Sentinel-2 pipelines.">
+<meta name="twitter:description" content="RETA research on cleaning agricultural geospatial data, plus open-source tools for satellite management zones, variable-rate prescriptions and QGIS CRS repair.">
 <meta name="twitter:image" content="https://dozer3530.github.io/og-image.png">
 <meta name="twitter:image:alt" content="Zachary Komarnisky — Digital Agriculture &amp; Applied Research">
+<meta name="color-scheme" content="light">
 <meta name="theme-color" content="#F2EFE6">
 <link rel="icon" type="image/png" sizes="48x48" href="favicon.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -43,14 +44,15 @@
       "sameAs": ["https://github.com/Dozer3530", "https://www.linkedin.com/in/zachary-komarnisky/"]
     },
     {
-      "@type": "ScholarlyArticle",
+      "@type": "Poster",
+      "@id": "https://dozer3530.github.io/#icpa2026-poster",
       "name": "A Machine Learning Framework for Automated Anomaly Detection in Precision Agriculture Geospatial Data",
       "author": [
         { "@id": "https://dozer3530.github.io/#person" },
         { "@type": "Person", "name": "Felippe H. S. Karp" }
       ],
       "datePublished": "2026-07",
-      "publisher": { "@type": "Organization", "name": "International Society of Precision Agriculture" }
+      "funder": { "@type": "Organization", "name": "Natural Sciences and Engineering Research Council of Canada" }
     }
   ]
 }
@@ -64,11 +66,13 @@
     --blue:   #1B4F9C;
     --yellow: #F2B705;
     --font: 'Jost', 'Futura', 'Century Gothic', system-ui, sans-serif;
+    color-scheme: light;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   section { scroll-margin-top: 84px; }
+  a, button, [tabindex]:not([tabindex="-1"]) { scroll-margin-top: 84px; }
 
   body {
     background: var(--paper);
@@ -133,7 +137,8 @@
   .burger.open i:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
   .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; z-index: 99;
-    background: var(--paper); border-bottom: 3px solid var(--ink); padding: 8px 32px 20px; }
+    background: var(--paper); border-bottom: 3px solid var(--ink); padding: 8px 32px 20px;
+    max-height: calc(100dvh - 72px); overflow-y: auto; overscroll-behavior: contain; }
   .mobile-menu a { display: block; text-decoration: none; font-weight: 500; font-size: 15px;
     letter-spacing: .1em; text-transform: uppercase; padding: 13px 0; border-bottom: 1px solid #d8d3c6; }
   .mobile-menu a:last-child { border-bottom: none; }
@@ -141,6 +146,7 @@
   /* ─────── HERO ─────── */
   .hero { padding: 150px 0 90px; position: relative; overflow: hidden; }
   .hero-grid { display: grid; grid-template-columns: 1fr 300px; gap: 48px; align-items: start; }
+  .hero-grid > div { min-width: 0; }
 
   .eyebrow {
     font-size: 13px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
@@ -149,7 +155,8 @@
   .eyebrow::before { content: ''; width: 44px; height: 12px; background: var(--red); flex-shrink: 0; }
 
   h1.name {
-    font-size: clamp(52px, 9vw, 118px); font-weight: 900; line-height: .88;
+    /* floor lets "KOMARNISKY" fit a 320px screen; cap fits the 768px text column */
+    font-size: clamp(38px, 9vw, 108px); font-weight: 900; line-height: .88;
     letter-spacing: -.035em; text-transform: uppercase; margin-bottom: 30px;
   }
   h1.name .l2 { display: block; color: var(--blue); }
@@ -157,6 +164,7 @@
   .lede { font-size: clamp(18px, 2vw, 22px); font-weight: 300; line-height: 1.5; max-width: 30ch; margin-bottom: 38px; }
   .lede b { font-weight: 700; }
 
+  .proof { font-size: 14px; color: var(--grey); margin: -22px 0 30px; max-width: 54ch; }
   .btns { display: flex; gap: 14px; flex-wrap: wrap; }
   .btn {
     font-family: var(--font); font-size: 13px; font-weight: 700; letter-spacing: .12em;
@@ -260,8 +268,10 @@
   .link:last-child { border-bottom: none; }
   .link:hover { background: var(--ink); color: var(--paper); }
   .link-mark { width: 15px; height: 15px; flex-shrink: 0; }
+  /* .m-tr is declared earlier, so restate the triangle here or .link-mark wins */
+  .link-mark.m-tr { width: 0; height: 0; border-left-width: 8px; border-right-width: 8px; border-bottom-width: 14px; }
   .link-k { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; flex: 1; }
-  .link-v { font-size: 14px; font-weight: 300; }
+  .link-v { font-size: 14px; font-weight: 300; overflow-wrap: anywhere; }
   .copy { background: none; border: 2px solid currentColor; cursor: pointer; font-family: var(--font); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 5px 9px; color: inherit; }
   .vh { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
@@ -291,6 +301,9 @@
     .burger { display: block; }
     .mobile-menu.open { display: block; }
   }
+  @media (max-width: 720px) {
+    .link { flex-wrap: wrap; padding: 16px; gap: 10px 12px; }
+  }
   @media (max-width: 660px) {
     .projects { grid-template-columns: 1fr; }
   }
@@ -313,10 +326,22 @@
     .btn { text-align: center; }
   }
 
+  @media print {
+    nav, .burger, .mobile-menu, .skip-link, .compo { display: none !important; }
+    .hero { padding-top: 0; }
+    /* backgrounds are dropped in print, so white-on-colour text would vanish */
+    .btn-red, .when-red { background: none !important; color: var(--ink) !important; border-color: var(--ink) !important; }
+    .projects, .skills { gap: 0; background: none; }
+    .proj, .skill { border: 1px solid var(--ink); }
+    .panel { max-height: none !important; visibility: visible !important; overflow: visible !important; }
+    .sec, .proj, .skill, .row { break-inside: avoid; }
+    a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 10px; color: #555; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .c-ci, .c-tr { animation: none; }
-    .panel { transition: none; }
+    .panel, .burger i, .btn, nav ul a, .more, .go, .link { transition: none; }
   }
 </style>
 </head>
@@ -334,9 +359,9 @@
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#work">Work</a></li>
+      <li><a href="#research">Research</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#education">Education</a></li>
-      <li><a href="#research">Research</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -348,9 +373,9 @@
   <a href="#about" onclick="closeMenu()">About</a>
   <a href="#skills" onclick="closeMenu()">Skills</a>
   <a href="#work" onclick="closeMenu()">Work</a>
+  <a href="#research" onclick="closeMenu()">Research</a>
   <a href="#experience" onclick="closeMenu()">Experience</a>
   <a href="#education" onclick="closeMenu()">Education</a>
-  <a href="#research" onclick="closeMenu()">Research</a>
   <a href="#contact" onclick="closeMenu()">Contact</a>
 </div>
 
@@ -363,8 +388,9 @@
     <div class="hero-grid">
       <div>
         <div class="eyebrow">Digital Agriculture &amp; Applied Research</div>
-        <h1 class="name">Zachary<span class="l2">Komarnisky</span></h1>
+        <h1 class="name">Zachary <span class="l2">Komarnisky</span></h1>
         <p class="lede">I build <b>open-source tools</b> that close the gap between raw field data and something farmers and researchers can actually use.</p>
+        <p class="proof">Digital Agriculture student at Olds College · ten open-source tools on GitHub · ICPA/ConBAP 2026 poster</p>
         <div class="btns">
           <a href="#work" class="btn btn-red">View Work</a>
           <a href="resume.pdf?v=2026" class="btn" target="_blank" rel="noopener noreferrer">Résumé</a>
@@ -382,7 +408,7 @@
     <div class="about">
       <div>
         <p>I'm a Digital Agriculture student at Olds College. My time is split between the field and the analysis — I've spent two summers at the <b>Olds College Centre for Innovation</b> collecting data with drones, soil probes and GPS equipment. But the part I care about is what happens next: turning that mess into something usable.</p>
-        <p>My current focus is the <b>RETA</b> research — an open-source toolkit for cleaning agricultural geospatial data, and its machine-learning extension <b>RETA-ML</b>, which uses graph neural networks to detect spatial outliers in field sensor data — alongside continuing work on <b>Kestrel</b>, a geospatial data inspector that diagnoses and repairs the CRS problems that stop layers from displaying. They sit in a growing family of open-source tools for field-data workflows.</p>
+        <p>My current focus is the <b>RETA</b> research — an open-source toolkit for cleaning agricultural geospatial data, and its machine-learning extension <b>RETA-ML</b>, which uses graph neural networks to detect spatial outliers in field sensor data — alongside continuing work on <b>Kestrel</b>, a geospatial data inspector that diagnoses and repairs the problems that stop layers from displaying. They sit in a growing family of open-source tools for field-data workflows.</p>
       </div>
       <div class="facts">
         <div class="fact"><span class="fact-k">Based</span><span class="fact-v">Carstairs, Alberta</span></div>
@@ -420,13 +446,13 @@
     <div class="projects">
 
       <article class="proj proj-wide">
-        <div class="proj-top"><span class="proj-mark m-tr" aria-hidden="true"></span><span class="proj-kind">Featured · 2026</span></div>
+        <div class="proj-top"><span class="proj-mark m-tr" aria-hidden="true"></span><span class="proj-kind">Tool · 2026</span></div>
         <h3>Waxwing</h3>
         <p>Management-zone builder for Alberta and Saskatchewan fields — pulls multi-year Sentinel-2 NDVI history, finds where a field is consistently above or below its own average, and clusters it into zones. Carries through to soil sampling design and variable-rate fertilizer prescriptions.</p>
-        <div class="tags"><span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">Sentinel-2</span><span class="tag">k-means</span><span class="tag">VRA</span></div>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">Sentinel-2</span><span class="tag">Clustering</span><span class="tag">VRA</span></div>
         <div class="panel" id="p-waxwing"><div class="panel-in">
-          <h4>Zoning</h4><ul role="list"><li>Growing-season NDVI history from 2017 onward via Copernicus, with quality gates for cloud, clear-pixel share and field NDVI</li><li>Weighted scene averaging; z-score, ratio, percentile or raw normalization</li><li>Balanced-breaks clustering with zone-size floors; silhouette analysis for zone count</li><li>Split-half and leave-one-year-out validation (Cohen's kappa)</li></ul>
-          <h4>Sampling &amp; prescriptions</h4><ul role="list"><li>Nine soil-sampling designs, from zone composite to conditioned Latin hypercube</li><li>Built-in sample-count calculator: n = (t·CV/D)² solved iteratively</li><li>Lab-result ANOVA per nutrient and N/P₂O₅/K₂O/S variable-rate prescriptions from provincial guidelines</li></ul>
+          <h4>Zoning</h4><ul role="list"><li>Growing-season NDVI history from 2017 onward via Copernicus, with quality gates for cloud, clear-pixel share and field NDVI</li><li>Weighted scene averaging; z-score, ratio, percentile or raw normalization</li><li>Selectable indices beyond NDVI — NDRE, GNDVI, MSAVI2 — plus bare-soil indices and brightness as an organic-matter proxy, with inverted season windows and quality gates</li><li>Balanced-breaks clustering (exact one-dimensional dynamic programme) with zone-size floors; silhouette analysis for zone count, k-means available as a comparison baseline</li><li>Split-half and leave-one-year-out validation (Cohen's kappa)</li></ul>
+          <h4>Sampling &amp; prescriptions</h4><ul role="list"><li>Ten soil-sampling designs across three families — directed, design-based and spatial — from zone composite to conditioned Latin hypercube</li><li>Built-in sample-count calculator: n = (t·CV/D)² solved iteratively</li><li>Lab-result ANOVA per nutrient and N/P₂O₅/K₂O/S variable-rate prescriptions from provincial guidelines</li></ul>
           <h4>Prairie-specific</h4><ul role="list"><li>Township-Range-Meridian boundary navigation; correct 486 × 483-chain survey grid</li><li>Soil-zone-aware nitrogen targets (Brown through Gray)</li><li>Optional yield monitor, soil EC and DEM-derivative layers; all data stays local</li></ul>
         </div></div>
         <div class="proj-foot">
@@ -436,14 +462,14 @@
       </article>
 
       <article class="proj">
-        <div class="proj-top"><span class="proj-mark m-sq" aria-hidden="true"></span><span class="proj-kind">Pipeline · 2025</span></div>
+        <div class="proj-top"><span class="proj-mark m-sq" aria-hidden="true"></span><span class="proj-kind">Tool · 2026</span></div>
         <h3>CropCore</h3>
         <p>Desktop analytics pipeline for Canadian prairie fields — consolidates Sentinel-2 imagery, weather, elevation and soil into multi-format farm reports with yield forecasting for wheat, barley and canola.</p>
-        <div class="tags"><span class="tag">Python</span><span class="tag">Sentinel-2</span><span class="tag">GeoPandas</span><span class="tag">QGIS</span></div>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Sentinel-2</span><span class="tag">GeoPandas</span><span class="tag">ReportLab</span></div>
         <div class="panel" id="p-cropcore"><div class="panel-in">
           <h4>Data sources</h4><ul role="list"><li>Sentinel-2 NDVI via Copernicus CDSE</li><li>Open-Meteo weather</li><li>CDEM / SRTM elevation &amp; slope</li><li>Alberta Open Data soil</li></ul>
           <h4>Outputs</h4><ul role="list"><li>PDF, HTML and text reports per field and farm</li><li>Field-summary CSV + QGIS layer manifest</li><li>NDVI time-lapse animations</li></ul>
-          <h4>Methodology</h4><ul role="list"><li>Stress index (0–100) and review priority ranking</li><li>Yield forecast with drought-stress penalties</li><li>187 automated tests</li></ul>
+          <h4>Methodology</h4><ul role="list"><li>Stress index (0–100) and review priority ranking</li><li>All API calls run concurrently (ThreadPoolExecutor); interactive console or headless <code>--sd-path</code> run, with an optional SMTP summary email</li><li>Yield forecast with drought-stress penalties, a soil-drainage modifier and ±20% confidence interval</li><li>187 automated tests</li></ul>
         </div></div>
         <div class="proj-foot">
           <button class="more" data-panel="p-cropcore" aria-expanded="false" aria-controls="p-cropcore">Details</button>
@@ -452,13 +478,13 @@
       </article>
 
       <article class="proj">
-        <div class="proj-top"><span class="proj-mark m-ci" aria-hidden="true"></span><span class="proj-kind">Research · 2025</span></div>
+        <div class="proj-top"><span class="proj-mark m-ci" aria-hidden="true"></span><span class="proj-kind">Research · 2026</span></div>
         <h3>RETA</h3>
         <p>Unified framework for cleaning yield-monitor and spatial agricultural data — removes operational, global and local errors through a sequential CRS-aware pipeline, as a QGIS plugin or headless script.</p>
         <div class="tags"><span class="tag">Python</span><span class="tag">QGIS</span><span class="tag">pyproj</span></div>
         <div class="panel" id="p-reta"><div class="panel-in">
-          <h4>Pipeline</h4><ul role="list"><li>3-phase filtering: operational → global → local</li><li>CRS-aware distance and area via pyproj</li><li>Auto-detection for speed, delay, turn threshold and AOI</li></ul>
-          <h4>Integration</h4><ul role="list"><li>QGIS Processing Toolbox algorithm</li><li>Headless mode — no QGIS runtime required</li><li>Manual correction and annotation tools</li></ul>
+          <h4>Pipeline</h4><ul role="list"><li>3-phase filtering: operational → global → local</li><li>CRS-aware distance and area via optional pyproj, falling back to WGS84 Haversine</li><li>Auto-detection for speed, delay, turn threshold and AOI</li></ul>
+          <h4>Integration</h4><ul role="list"><li>QGIS Processing Toolbox algorithm</li><li>Headless DataCleaner for global/AOI filtering — no QGIS runtime (the full three-phase pipeline runs in QGIS)</li><li>Manual correction and annotation tools</li></ul>
           <h4>Output</h4><ul role="list"><li>Filtered layer with category and reason per point</li><li>Colour-coded by error class</li></ul>
         </div></div>
         <div class="proj-foot">
@@ -468,14 +494,15 @@
       </article>
 
       <article class="proj">
-        <div class="proj-top"><span class="proj-mark m-tr" aria-hidden="true"></span><span class="proj-kind">Research · 2025</span></div>
+        <div class="proj-top"><span class="proj-mark m-tr" aria-hidden="true"></span><span class="proj-kind">Research · 2026</span></div>
         <h3>RETA-ML</h3>
         <p>Graph-neural-network outlier detection built on the RETA pipeline — classifies yield-monitor errors into four categories using a HeteroGAT model with temporal, spatial and transect graph edges.</p>
-        <div class="tags"><span class="tag">PyTorch</span><span class="tag">PyG</span><span class="tag">HeteroGAT</span><span class="tag">Optuna</span></div>
+        <div class="tags"><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">XGBoost</span><span class="tag">PyTorch</span><span class="tag">PyG</span><span class="tag">HeteroGAT</span></div>
         <div class="panel" id="p-retaml"><div class="panel-in">
+          <h4>Ships</h4><ul role="list"><li>Trained Random Forest (400 trees) and XGBoost models with a model card — 49,665 training points, 13 features</li><li>Streamlit app to load a field, run a model and inspect the results</li></ul>
           <h4>Architecture</h4><ul role="list"><li>HeteroGAT, 3 edge types per field</li><li>4 classes: clean, operational, global, local</li><li>Variogram-derived spatial radius</li></ul>
           <h4>Training</h4><ul role="list"><li>Masked hierarchical focal loss</li><li>Temperature-scaling calibration</li><li>Optuna hyperparameter sweep</li></ul>
-          <h4>Published results</h4><ul role="list"><li>Presented at the 17th ICPA / 11th ConBAP, Brazil (2026)</li><li>~50,000-point annotated dataset, 3 sensors</li><li>Leave-one-sensor-out CV: clean F1 0.95 (RF) / 0.90 (XGB); local anomalies only 0.30 / 0.34 — the gap motivating the graph approach</li></ul>
+          <h4>Poster results — RF / XGBoost baselines</h4><ul role="list"><li>Presented at the 17th ICPA / 11th ConBAP, Brazil (2026)</li><li>~50,000-point annotated dataset, 3 sensors</li><li>Leave-one-sensor-out CV: clean F1 0.95 (RF) / 0.90 (XGB); local anomalies only 0.30 / 0.34 — the gap motivating the graph approach</li><li>These are the poster's tree-ensemble baselines. The HeteroGAT model is the spatially-explicit next step and is not yet benchmarked against them</li></ul>
         </div></div>
         <div class="proj-foot">
           <button class="more" data-panel="p-retaml" aria-expanded="false" aria-controls="p-retaml">Details</button>
@@ -486,11 +513,11 @@
       <article class="proj">
         <div class="proj-top"><span class="proj-mark m-sq" aria-hidden="true"></span><span class="proj-kind">Tool · 2026</span></div>
         <h3>Albatross</h3>
-        <p>Local Sentinel-2 field monitoring console. Upload boundaries and it auto-checks Copernicus for new acquisitions, downloads only the pixels inside each field, and builds an NDVI dashboard. Data stays local.</p>
-        <div class="tags"><span class="tag">Python</span><span class="tag">Copernicus</span><span class="tag">NDVI</span><span class="tag">SQLite</span></div>
+        <p>Local Sentinel-2 field monitoring console. Upload boundaries and it auto-checks Copernicus for new acquisitions, downloads only the pixels inside each field, and builds an NDVI + NDWI dashboard. Data stays local.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Copernicus</span><span class="tag">NDVI</span><span class="tag">NDWI</span><span class="tag">SQLite</span></div>
         <div class="panel" id="p-albatross"><div class="panel-in">
-          <h4>Monitoring</h4><ul role="list"><li>Auto-scans Copernicus for new L2A passes</li><li>NDVI = (B08 − B04)/(B08 + B04) at 10 m</li><li>Cloud masking via SCL classes 3, 8, 9, 10</li></ul>
-          <h4>Outputs</h4><ul role="list"><li>float32 NDVI GeoTIFF, colormap PNG, true-colour PNG</li><li>Mean-NDVI timeline with outlier filtering</li><li>Local SQLite store — nothing leaves the machine</li></ul>
+          <h4>Monitoring</h4><ul role="list"><li>Auto-scans Copernicus for new L2A passes</li><li>NDVI = (B08 − B04)/(B08 + B04) and NDWI = (B03 − B08)/(B03 + B08) at 10 m</li><li>Cloud masking via SCL classes 3, 8, 9, 10</li></ul>
+          <h4>Outputs</h4><ul role="list"><li>NDVI and NDWI GeoTIFFs (float32) with colormap PNGs, true-colour PNG and the SCL scene-classification TIFF</li><li>Mean-NDVI timeline with outlier filtering</li><li>Local SQLite store — nothing leaves the machine</li></ul>
         </div></div>
         <div class="proj-foot">
           <button class="more" data-panel="p-albatross" aria-expanded="false" aria-controls="p-albatross">Details</button>
@@ -504,8 +531,8 @@
         <p>Sentinel-2 L2A imagery downloader for field boundaries — all-time cloud-filtered retrieval, output as analysis-ready GeoTIFFs clipped to the field.</p>
         <div class="tags"><span class="tag">Python</span><span class="tag">Sentinel-2</span><span class="tag">GeoTIFF</span></div>
         <div class="panel" id="p-lapwing"><div class="panel-in">
-          <h4>Outputs</h4><ul role="list"><li>RGB, NDVI, NDWI and false-colour composites</li><li>DEM and slope with provider fallback</li><li>All clipped to the exact field boundary</li></ul>
-          <h4>Technical</h4><ul role="list"><li>Copernicus CDSE with optional AWS S3 access</li><li>Parallel downloads, configurable cloud filter</li><li>GUI or CLI</li></ul>
+          <h4>Outputs</h4><ul role="list"><li>RGB, NDVI, NDWI and false-colour composites</li><li>DEM and slope with provider fallback</li><li>All clipped to the exact field boundary</li><li>Historical NDVI average — composites every year inside a seasonal window, the direct input to zone work like Waxwing</li></ul>
+          <h4>Technical</h4><ul role="list"><li>Copernicus CDSE, with optional direct S3 access for faster downloads</li><li>Parallel downloads, configurable cloud filter</li><li>GUI or CLI</li></ul>
         </div></div>
         <div class="proj-foot">
           <button class="more" data-panel="p-lapwing" aria-expanded="false" aria-controls="p-lapwing">Details</button>
@@ -516,13 +543,15 @@
       <article class="proj">
         <div class="proj-top"><span class="proj-mark m-tr" aria-hidden="true"></span><span class="proj-kind">Tool · 2026</span></div>
         <h3>Kestrel</h3>
-        <p>Desktop inspector that works out why a geospatial layer will not display in QGIS — then fixes it. Names the actual problem in plain language, and can assign a CRS, reproject, repair geometry or convert format. Originals are never touched; repairs write new files.</p>
+        <p>Desktop inspector that works out why a geospatial layer will not display — in QGIS, ArcGIS or an ArcGIS REST service — then fixes it. Names the actual problem in plain language, and can assign a CRS, reproject, repair geometry or convert format. Originals are never touched; repairs write new files.</p>
         <div class="tags"><span class="tag">Python</span><span class="tag">GDAL</span><span class="tag">PROJ</span><span class="tag">rasterio</span><span class="tag">Inno Setup</span></div>
         <div class="panel" id="p-kestrel"><div class="panel-in">
           <h4>Diagnoses</h4><ul role="list"><li>Missing or undefined CRS and absent .prj files</li><li>Coordinate/CRS mismatch — lat-lon values tagged as projected</li><li>Data outside its CRS validity zone, or the wrong UTM hemisphere</li><li>Empty layers, zero-area extents and Null Island coordinates</li><li>Invalid or self-intersecting geometry; clashing CRS between layers in one GeoPackage</li></ul>
           <h4>Repairs</h4><ul role="list"><li>Assign a CRS without moving coordinates, or reproject to a new one</li><li>Validate and repair geometry</li><li>Convert between GeoPackage, Shapefile and GeoJSON</li><li>Turn a CSV or Excel coordinate table into a point layer</li></ul>
           <h4>Inspection</h4><ul role="list"><li>EPSG code, UTM zone, datum and validity region; extent reprojected to WGS84</li><li>Interactive map preview — offline coastlines and borders, optional satellite imagery</li><li>Vector geometry type, feature count and field names; raster bands, data type, pixel size and NoData</li></ul>
-          <h4>Inputs &amp; distribution</h4><ul role="list"><li>Shapefile (zipped or plain), multi-layer GeoPackage, GeoJSON, KML/KMZ, GML, GPX, CSV/Excel, and rasters (GeoTIFF, IMG, VRT, JPEG2000)</li><li>Windows installer needing no admin rights, or a portable zip; right-click integration via --register</li></ul>
+          <h4>ArcGIS</h4><ul role="list"><li>Paste an ArcGIS REST URL (FeatureServer / MapServer) to read CRS, location, geometry type, fields and a map preview &mdash; and verify the service&rsquo;s published extent actually matches its data, since a stale one sends every client&rsquo;s &ldquo;Zoom to Layer&rdquo; to the wrong place</li><li>Drop a .lyrx or .mapx and it follows the layer through to its source, flagging broken links, scratch Default.gdb paths that work today and break next week, and definition queries quietly hiding features</li></ul>
+          <h4>Batch &amp; automation</h4><ul role="list"><li>Audit an entire folder &mdash; one row per dataset, worst problems first, exported to CSV or HTML; answers which of 400 files will be a problem before a delivery goes out</li><li>JSON CLI mode returning a non-zero exit code on error, so it drops straight into a CI check; ~48 checks in total</li></ul>
+          <h4>Inputs &amp; distribution</h4><ul role="list"><li>Shapefile, multi-layer GeoPackage, File Geodatabase, GeoJSON, KML/KMZ, GML, GPX, DXF, CSV/Excel, LAS/LAZ point clouds (header-only, so instant on huge clouds), rasters (GeoTIFF, IMG, VRT, JPEG2000) &mdash; and most other OGR/GDAL formats</li><li>Windows installer needing no admin rights, or a portable zip; right-click integration via --register</li></ul>
         </div></div>
         <div class="proj-foot">
           <button class="more" data-panel="p-kestrel" aria-expanded="false" aria-controls="p-kestrel">Details</button>
@@ -533,11 +562,11 @@
       <article class="proj">
         <div class="proj-top"><span class="proj-mark m-sq" aria-hidden="true"></span><span class="proj-kind">Tool · 2026</span></div>
         <h3>Plover</h3>
-        <p>QGIS plugin solving the travelling-salesperson problem for field routing — shortest tour across all waypoints while respecting boundaries and interior obstacles.</p>
+        <p>QGIS plugin solving the travelling-salesperson problem for field routing — shortest tour across all waypoints, staying inside the field and routing around sloughs and exclusion zones — or a plain straight-line TSP when no boundary is supplied.</p>
         <div class="tags"><span class="tag">Python</span><span class="tag">QGIS</span><span class="tag">Dijkstra</span></div>
         <div class="panel" id="p-plover"><div class="panel-in">
-          <h4>Algorithm</h4><ul role="list"><li>Visibility graph respecting polygon holes</li><li>Dijkstra shortest paths between waypoints</li><li>Nearest-neighbour + 2-opt optimization</li></ul>
-          <h4>Integration</h4><ul role="list"><li>QGIS 3.x and 4.x (Qt5/Qt6)</li><li>GeoPackage, Shapefile or GeoJSON output</li><li>Built for soil sampling and sensor verification</li></ul>
+          <h4>Algorithm</h4><ul role="list"><li>Visibility graph reduced to turn vertices only — concave field and hole corners, so a rectangular field contributes no graph nodes</li><li>Dijkstra shortest paths between waypoints</li><li>Multi-start nearest-neighbour polished by alternating 2-opt and Or-opt — 11× faster and 5% shorter tours than v2.7 on a 100-point field</li></ul>
+          <h4>Integration</h4><ul role="list"><li>QGIS 3.22+ and 4.x (Qt5/Qt6)</li><li>GeoPackage, Shapefile, GeoJSON, plus GPX and KML reprojected to WGS84 for a handheld or phone</li><li>Registered Processing algorithm (plover:tsproute) for Model Designer, batch and PyQGIS; runs as a cancellable background task</li><li>Built for soil sampling and sensor verification</li></ul>
         </div></div>
         <div class="proj-foot">
           <button class="more" data-panel="p-plover" aria-expanded="false" aria-controls="p-plover">Details</button>
@@ -564,7 +593,7 @@
         <div class="proj-top"><span class="proj-mark m-tr" aria-hidden="true"></span><span class="proj-kind">Tool · 2026</span></div>
         <h3>Magpie</h3>
         <p>Weekly crop-monitoring package builder — merges Survey123 observations, PT2R lab nutrient data and Pest ID bug counts into per-crop Excel and GeoPackage deliverables.</p>
-        <div class="tags"><span class="tag">PySide6</span><span class="tag">FastAPI</span><span class="tag">SQLite</span></div>
+        <div class="tags"><span class="tag">Python</span><span class="tag">PySide6</span><span class="tag">FastAPI</span><span class="tag">SQLite</span></div>
         <div class="panel" id="p-magpie"><div class="panel-in">
           <h4>Data sources</h4><ul role="list"><li>Survey123 — disease, soil sensors, insects, growth stage</li><li>PT2R lab nutrient panels</li><li>Pest ID per-field bug-count log</li></ul>
           <h4>Architecture</h4><ul role="list"><li>PySide6 desktop and FastAPI web on one service layer</li><li>SQLite (WAL); parity test guarantees identical output</li></ul>
@@ -587,8 +616,22 @@
     </div>
   </section>
 
+  <section class="sec" id="research">
+    <div class="sec-head"><div class="sec-num n4">04</div><h2 class="sec-title">Research</h2></div>
+    <div class="rows">
+      <div class="row">
+        <div>
+          <h3>A Machine Learning Framework for Automated Anomaly Detection in Precision Agriculture Geospatial Data</h3>
+          <div class="org">Poster — <a href="https://www.ispag.org/icpa" target="_blank" rel="noopener noreferrer">17th International Conference on Precision Agriculture</a> / 11th Brazilian Congress on Precision and Digital Agriculture · Porto Alegre, Brazil</div>
+          <div class="desc">With Felippe H. S. Karp (Olds College). Built an expert-annotated ~50,000-point dataset spanning three sensors (EM38, Veris 3100, GreenStar yield monitor) and evaluated Random Forest and XGBoost under leave-one-sensor-out cross-validation. Clean readings transferred reliably (RF F1 = 0.95) and operational errors moderately (0.52), but local spatial anomalies transferred poorly (0.30) — the finding that motivates RETA-ML's graph neural network approach. Funded by an NSERC CCI Mobilize Grant.</div>
+        </div>
+        <div class="when when-red">July 2026</div>
+      </div>
+    </div>
+  </section>
+
   <section class="sec" id="experience">
-    <div class="sec-head"><div class="sec-num n4">04</div><h2 class="sec-title">Experience</h2></div>
+    <div class="sec-head"><div class="sec-num n5">05</div><h2 class="sec-title">Experience</h2></div>
     <div class="rows">
       <div class="row">
         <div>
@@ -610,7 +653,7 @@
   </section>
 
   <section class="sec" id="education">
-    <div class="sec-head"><div class="sec-num n5">05</div><h2 class="sec-title">Education</h2></div>
+    <div class="sec-head"><div class="sec-num n6">06</div><h2 class="sec-title">Education</h2></div>
     <div class="rows">
       <div class="row">
         <div>
@@ -630,19 +673,6 @@
     </div>
   </section>
 
-  <section class="sec" id="research">
-    <div class="sec-head"><div class="sec-num n6">06</div><h2 class="sec-title">Research</h2></div>
-    <div class="rows">
-      <div class="row">
-        <div>
-          <h3>A Machine Learning Framework for Automated Anomaly Detection in Precision Agriculture Geospatial Data</h3>
-          <div class="org">Poster — 17th International Conference on Precision Agriculture / 11th Brazilian Congress on Precision and Digital Agriculture · Porto Alegre, Brazil</div>
-          <div class="desc">With Felippe H. S. Karp (Olds College). Built an expert-annotated ~50,000-point dataset spanning three sensors (EM38, Veris 3100, GreenStar yield monitor) and evaluated Random Forest and XGBoost under leave-one-sensor-out cross-validation. Clean readings transferred reliably (RF F1 = 0.95) and operational errors moderately (0.52), but local spatial anomalies transferred poorly (0.30) — the finding that motivates RETA-ML's graph neural network approach. Funded by an NSERC CCI Mobilize Grant.</div>
-        </div>
-        <div class="when when-red">July 2026</div>
-      </div>
-    </div>
-  </section>
 
   <section class="sec" id="contact">
     <div class="sec-head"><div class="sec-num n7">07</div><h2 class="sec-title">Contact</h2></div>
@@ -664,7 +694,7 @@
           <span class="link-k">GitHub</span><span class="link-v">/Dozer3530</span>
         </a>
         <a class="link" href="https://www.linkedin.com/in/zachary-komarnisky/" target="_blank" rel="noopener noreferrer">
-          <span class="link-mark m-tr" aria-hidden="true" style="border-bottom-color:var(--yellow)"></span>
+          <span class="link-mark m-tr" aria-hidden="true"></span>
           <span class="link-k">LinkedIn</span><span class="link-v">/zachary-komarnisky</span>
         </a>
       </div>
@@ -699,16 +729,22 @@ function closeMenu() {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && menu.classList.contains('open')) { closeMenu(); burger.focus(); }
 });
-window.addEventListener('resize', closeMenu);
+// Only close on an actual breakpoint crossing — a bare resize also fires when
+// the mobile URL bar collapses or a software keyboard opens.
+matchMedia('(min-width: 901px)').addEventListener('change', e => { if (e.matches) closeMenu(); });
 
 // Detail panels
 document.querySelectorAll('.more').forEach(btn => {
   btn.addEventListener('click', () => {
     const p = document.getElementById(btn.dataset.panel);
+    const before = btn.getBoundingClientRect().top;
     const open = p.classList.toggle('open');
     p.style.maxHeight = open ? p.scrollHeight + 'px' : '';
     btn.textContent = open ? 'Close' : 'Details';
     btn.setAttribute('aria-expanded', String(open));
+    // .proj-foot sits after .panel, so opening displaces the button by the
+    // panel's full height — scroll to keep it where the user tapped.
+    window.scrollBy(0, btn.getBoundingClientRect().top - before);
   });
 });
 window.addEventListener('resize', () => {
@@ -730,7 +766,11 @@ function copyEmail(btn) {
 // Active nav
 const navLinks = document.querySelectorAll('nav ul a, .mobile-menu a');
 const io = new IntersectionObserver(entries => entries.forEach(e => {
-  if (e.isIntersecting) navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+  if (e.isIntersecting) navLinks.forEach(a => {
+    const on = a.getAttribute('href') === '#' + e.target.id;
+    a.classList.toggle('active', on);
+    if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+  });
 }), { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
 document.querySelectorAll('main section[id]').forEach(s => io.observe(s));
 </script>
